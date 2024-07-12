@@ -42,6 +42,30 @@ initrd     win10/drv/virtio/viostor.inf  viostor.inf ||
 initrd     win10/drv/virtio/viostor.sys  viostor.sys ||
 goto skip_virtio
 :skip_virtio
+iseq ${pciid} 8086100e && goto use_vbox ||
+goto skip_vbox
+:use_vbox
+initrd win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
+initrd win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
+initrd win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
+initrd win10/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd win10/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd win10/drv/vbox/VBoxMouse.cat VBoxMouse.cat
+initrd win10/drv/vbox/VBoxMouse.inf VBoxMouse.inf
+initrd win10/drv/vbox/VBoxMouse.sys VBoxMouse.sys
+initrd win10/drv/vbox/VBoxVideo.cat VBoxVideo.cat
+initrd win10/drv/vbox/VBoxVideo.inf VBoxVideo.inf
+initrd win10/drv/vbox/VBoxVideo.sys VBoxVideo.sys
+initrd win10/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd win10/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd win10/drv/vbox/VBoxWddm.cat VBoxWddm.cat
+initrd win10/drv/vbox/VBoxWddm.inf VBoxWddm.inf
+initrd win10/drv/vbox/VBoxWddm.sys VBoxWddm.sys
+initrd win10/drv/vbox/vboxguest.cat vboxguest.cat
+initrd win10/drv/vbox/vboxmouse.cat vboxmouse.cat
+initrd win10/drv/vbox/vboxwddm.cat vboxwddm.cat
+goto skip_vbox
+:skip_vbox
 initrd --name startnet.cmd  win10/startnet.php?mac=${netX/mac:hexraw}&pciid=${pciid}${startnetx}  startnet.cmd       || shell
 initrd --name winpe.jpg          win10/winpe.jpg                winpe.jpg          || echo no background - ignored
 initrd --name winre.jpg          win10/winpe.jpg                winre.jpg          || echo no background - ignored

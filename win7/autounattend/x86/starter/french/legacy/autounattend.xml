@@ -71,30 +71,6 @@
 			<Diagnostics>
 				<OptIn>false</OptIn>
 			</Diagnostics>
-			<DiskConfiguration>
-				<WillShowUI>OnError</WillShowUI>
-				<Disk wcm:action="add">
-					<DiskID>0</DiskID>
-					<WillWipeDisk>true</WillWipeDisk>
-					<CreatePartitions>
-						<CreatePartition wcm:action="add">
-							<Extend>true</Extend>
-							<Order>1</Order>
-							<Type>Primary</Type>
-						</CreatePartition>
-					</CreatePartitions>
-					<ModifyPartitions>
-						<ModifyPartition wcm:action="add">
-							<Active>true</Active>
-							<Format>NTFS</Format>
-							<Label>Windows</Label>
-							<Letter>C</Letter>
-							<Order>1</Order>
-							<PartitionID>1</PartitionID>
-						</ModifyPartition>
-					</ModifyPartitions>
-				</Disk>
-			</DiskConfiguration>
 			<DynamicUpdate>
 				<Enable>false</Enable>
 				<WillShowUI>OnError</WillShowUI>
@@ -110,7 +86,7 @@
 					</InstallFrom>
 					<InstallTo>
 						<DiskID>0</DiskID>
-						<PartitionID>1</PartitionID>
+						<PartitionID>2</PartitionID>
 					</InstallTo>
 				</OSImage>
 			</ImageInstall>

@@ -48,8 +48,8 @@ regsvr32 /s winfsp-x86.dll
 7z -x wget-1.11.4-1-dep.zip
 cmd
 rem rclone config create http http http=https://depot-andykimpe.sourceforge.net/win7/x86/starter url=https://depot-andykimpe.sourceforge.net/win7/x86/starter/
-rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/
-echo 195.201.179.80 andykimpe.ovh > x:\Windows\System32\Drivers\etc\hosts
+rem rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/
+rem echo 195.201.179.80 andykimpe.ovh > x:\Windows\System32\Drivers\etc\hosts
 rem rclone config create http http http=http://andykimpe.ovh/starter url=http://andykimpe.ovh/starter/
 rem rclone config create ftp ftp host=195.201.179.80 user=andykimp pass=OMG*xvh0d$J.
 rem rclone config create http2 ftp host=ftpupload.net user=ezyro_36894543 pass=e452b32bf
@@ -57,19 +57,58 @@ rem rclone config create http combine upstreams="dir1=http1:/htdocs/ dir2=http2:
 rem rclone config create http http http=http://10.0.0.200/win7/x86/starter url=http://10.0.0.200/win7/x86/starter/
 rem start rclone mount 7starterx86: y: --transfers 4 --checkers 8 --vfs-cache-mode=full --dir-cache-time=5000h --poll-interval=10s --rc --rc-addr=:5572 --rc-no-auth --drive-pacer-min-sleep=10ms --drive-pacer-burst=200 --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0" --file-perms=0777 --dir-perms 0777 --network-mode -vv
 rem start rclone mount 7starterx86: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 -vv --vfs-cache-max-size=100M --vfs-cache-poll-interval 5m --bwlimit 90M --transfers 1
-mkdir s:\sources
-rclone copy http:\sources s:\sources -vv
+
+
+
+mkdir s:\sources\
+mkdir s:\sources\dlmanifests\
+mkdir s:\sources\bitsextensions-server\
+mkdir s:\sources\microsoft-activedirectory-webservices-dl\
+mkdir s:\sources\microsoft-windows-adfs-dl\
+mkdir s:\sources\microsoft-windows-bluetooth-config\
+mkdir s:\sources\microsoft-windows-com-complus-setup-dl\
+mkdir s:\sources\microsoft-windows-com-dtc-setup-dl\
+mkdir s:\sources\microsoft-windows-dhcpservermigplugin-dl\
+mkdir s:\sources\microsoft-windows-directoryservices-adam-dl\
+mkdir s:\sources\microsoft-windows-iasserver-migplugin\
+mkdir s:\sources\microsoft-windows-iasserver-migplugin\en-us\
+mkdir s:\sources\microsoft-windows-ie-clientnetworkprotocolimplementation\
+mkdir s:\sources\microsoft-windows-iis-dl\
+mkdir s:\sources\microsoft-windows-international-core-dl\
+mkdir s:\sources\microsoft-windows-internet-naming-service-runtime\
+mkdir s:\sources\microsoft-windows-mediaplayer-drm-dl\
+mkdir s:\sources\microsoft-windows-mediaplayer\
+mkdir s:\sources\microsoft-windows-msmq-messagingcoreservice\
+mkdir s:\sources\microsoft-windows-ndis\
+mkdir s:\sources\microsoft-windows-networkbridge\
+mkdir s:\sources\microsoft-windows-networkloadbalancing-core\
+mkdir s:\sources\microsoft-windows-offlinefiles-dl\
+mkdir s:\sources\microsoft-windows-performancecounterinfrastructure-dl\
+mkdir s:\sources\microsoft-windows-performancecounterinfrastructureconsumer-dl\
+mkdir s:\sources\microsoft-windows-rasconnectionmanager\
+mkdir s:\sources\microsoft-windows-rasserver-migplugin\
+mkdir s:\sources\microsoft-windows-shmig-dl\
+mkdir s:\sources\microsoft-windows-storagemigration\
+mkdir s:\sources\microsoft-windows-storagemigration\en-us\
+mkdir s:\sources\microsoft-windows-sxs\
+mkdir s:\sources\microsoft-windows-tapisetup\
+mkdir s:\sources\microsoft-windows-terminalservices-licenseserver\
+mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
+mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
+7z x wget-1.11.4-1-bin.zip
+7z x wget-1.11.4-1-dep.zip
+cd s:\
+x:\Windows\System32\bin\wget.exe "https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso" -O "s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso"
+7z x fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso
+rem rclone copy http:\sources s:\sources -vv
 rem start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 --vfs-cache-max-size=500M -vv
 rem net use y: \\195.201.179.80\domains\andykimpe.ovh\public_html\starter /user:"andykimp" "OMG*xvh0d$J."
 rem FTPUSE y: 195.201.179.80 OMG*xvh0d$J. /USER:andykimp
 rem  --bwlimit 1M --buffer-size=0
 ping -n 5 62.210.202.52
 rem wimextract y:\sources\install.swm 1 / --dest-dir=w:\ --ref="y:\sources\install*.swm"
-rem s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
+s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 cmd
-wget-1.11.4-1-bin.zip
-wget-1.11.4-1-dep.zip
-
 pause
 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"y:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 Dism /Image:W:\ /Add-Driver /Driver:VBoxGuest.inf

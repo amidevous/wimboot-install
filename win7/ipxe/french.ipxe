@@ -102,25 +102,25 @@ goto skip_virtio
 iseq ${pciid} 8086100e && goto use_vbox ||
 goto skip_vbox
 :use_vbox
-initrd http://${server_ip}/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
-initrd http://${server_ip}/win10/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxMouse.cat VBoxMouse.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxMouse.inf VBoxMouse.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxMouse.sys VBoxMouse.sys
-initrd http://${server_ip}/win10/drv/vbox/VBoxVideo.cat VBoxVideo.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxVideo.inf VBoxVideo.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxVideo.sys VBoxVideo.sys
-initrd http://${server_ip}/win10/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxWddm.cat VBoxWddm.cat
-initrd http://${server_ip}/win10/drv/vbox/VBoxWddm.inf VBoxWddm.inf
-initrd http://${server_ip}/win10/drv/vbox/VBoxWddm.sys VBoxWddm.sys
-initrd http://${server_ip}/win10/drv/vbox/vboxguest.cat vboxguest.cat
-initrd http://${server_ip}/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
-initrd http://${server_ip}/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxMouse.cat VBoxMouse.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxMouse.inf VBoxMouse.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxMouse.sys VBoxMouse.sys
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxVideo.cat VBoxVideo.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxVideo.inf VBoxVideo.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxVideo.sys VBoxVideo.sys
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxWddm.cat VBoxWddm.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxWddm.inf VBoxWddm.inf
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/VBoxWddm.sys VBoxWddm.sys
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/vboxguest.cat vboxguest.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
 goto skip_vbox
 :skip_vbox
 initrd https://github.com/amidevous/wimboot-install/raw/win7/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml

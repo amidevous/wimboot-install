@@ -21,7 +21,7 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/win7/win7/ipxe/menu.ipxe
 
 :item2
 imgfree
@@ -42,61 +42,61 @@ iseq ${pciid} 808615be && goto use_e1d68 ||
 goto skip_e1d68
 :use_e1d68
 set startnetx ${startnetx}&drvload=e1d68x64.inf
-initrd     http://${server_ip}/win10/drv/i219v_e1d68/e1d68x64.cat ||
-initrd     http://${server_ip}/win10/drv/i219v_e1d68/e1d68x64.inf ||
-initrd     http://${server_ip}/win10/drv/i219v_e1d68/e1d68x64.sys ||
-initrd     http://${server_ip}/win10/drv/i219v_e1d68/e1dmsg.dll ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/i219v_e1d68/e1d68x64.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/i219v_e1d68/e1d68x64.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/i219v_e1d68/e1d68x64.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/i219v_e1d68/e1dmsg.dll ||
 :skip_e1d68
 iseq ${pciid} 1af41000 && goto use_virtio ||
 goto skip_virtio
 :use_virtio
 # without extra name wimboot crashes (in pcbios mode)
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/virtio/balloon.cat   balloon.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.inf   balloon.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.sys   balloon.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/blnsvr.exe blnsvr.exe ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.cat   netkvm.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.inf   netkvm.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.sys   netkvm.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvmco.dll netkvmco.dll ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.cat  vioscsi.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.inf  vioscsi.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.sys  vioscsi.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.cat  viostor.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.inf  viostor.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.sys  viostor.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat  fwcfg.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf  fwcfg.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys  fwcfg.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.cat  qemupciserial.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.inf  qemupciserial.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.cat  qxldod.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.inf  qxldod.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.sys  qxldod.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.cat  vioprot.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.inf  vioprot.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.cat  viofs.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.inf  viofs.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.sys  viofs.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.cat  viogpudo.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.inf  viogpudo.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.sys  viogpudo.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.cat  vioinput.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.inf  vioinput.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.sys  vioinput.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.cat  viorng.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.inf  viorng.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.sys  viorng.sys ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
-initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/virtio/balloon.cat   balloon.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.inf   balloon.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.sys   balloon.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/blnsvr.exe blnsvr.exe ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.cat   netkvm.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.inf   netkvm.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.sys   netkvm.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvmco.dll netkvmco.dll ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.cat  vioscsi.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.inf  vioscsi.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.sys  vioscsi.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.cat  viostor.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.inf  viostor.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.sys  viostor.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat  fwcfg.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf  fwcfg.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys  fwcfg.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.cat  qemupciserial.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.inf  qemupciserial.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.cat  qxldod.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.inf  qxldod.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.sys  qxldod.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.cat  vioprot.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.inf  vioprot.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.cat  viofs.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.inf  viofs.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.sys  viofs.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.cat  viogpudo.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.inf  viogpudo.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.sys  viogpudo.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.cat  vioinput.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.inf  vioinput.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.sys  vioinput.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.cat  viorng.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.inf  viorng.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.sys  viorng.sys ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
+initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
 goto skip_virtio
 :skip_virtio
 iseq ${pciid} 8086100e && goto use_vbox ||
@@ -124,14 +124,13 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win10/dr
 goto skip_vbox
 :skip_vbox
 initrd https://github.com/amidevous/wimboot-install/raw/win7/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
-#initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/french/legacy/rclone.conf rclone.conf
-initrd http://${server_ip}/win7/x86/openvpn/7-zip.dll 7-zip.dll
-initrd http://${server_ip}/win7/x86/openvpn/7z.dll 7z.dll
-initrd http://${server_ip}/win7/x86/openvpn/7z.exe 7z.exe
-initrd http://${server_ip}/win7/x86/openvpn/openvpn.zip openvpn.zip
-initrd http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip wget-1.11.4-1-bin.zip
-initrd http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-dep.zip wget-1.11.4-1-dep.zip
-initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,2.dll 7-zip.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/openvpn.zip openvpn.zip
+initrd https://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip wget-1.11.4-1-bin.zip
+initrd https://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-dep.zip wget-1.11.4-1-dep.zip
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.wim boot.wim
 boot || goto menu
 
 :item3

@@ -25,15 +25,12 @@ chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
 
 :item2
 imgfree
-kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet                                                           || shell
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
 #kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
-
-set startnetx
-
-initrd http://${server_ip}/win10/french/boot/bcd bcd
-initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
-initrd http://${server_ip}/win7/x86/autounattend/x86/starter/french/legacy/install.bat install.bat
-initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win7/autounattend/x86/starter/french/legacy/install.bat install.bat
+initrd https://github.com/amidevous/wimboot-install/raw/win7/winpeshl.ini winpeshl.ini
 # E1D68
 # TODO 0d4f only installing drivers in winpe, not when getting into windows.
 # 15fc on T15 not working in winpe either
@@ -68,6 +65,38 @@ initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vios
 initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.cat  viostor.cat ||
 initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.inf  viostor.inf ||
 initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.sys  viostor.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat  fwcfg.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf  fwcfg.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys  fwcfg.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.cat  qemupciserial.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.inf  qemupciserial.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.cat  qxldod.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.inf  qxldod.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.sys  qxldod.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.cat  vioprot.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.inf  vioprot.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.cat  viofs.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.inf  viofs.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.sys  viofs.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.cat  viogpudo.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.inf  viogpudo.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.sys  viogpudo.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.cat  vioinput.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.inf  vioinput.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.sys  vioinput.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.cat  viorng.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.inf  viorng.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.sys  viorng.sys ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
+initrd     http://${server_ip}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
 goto skip_virtio
 :skip_virtio
 iseq ${pciid} 8086100e && goto use_vbox ||
@@ -94,7 +123,14 @@ initrd http://${server_ip}/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
 initrd http://${server_ip}/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
 goto skip_vbox
 :skip_vbox
-initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
+initrd https://github.com/amidevous/wimboot-install/raw/win7/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
+#initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/french/legacy/rclone.conf rclone.conf
+initrd http://${server_ip}/win7/x86/openvpn/7-zip.dll 7-zip.dll
+initrd http://${server_ip}/win7/x86/openvpn/7z.dll 7z.dll
+initrd http://${server_ip}/win7/x86/openvpn/7z.exe 7z.exe
+initrd http://${server_ip}/win7/x86/openvpn/openvpn.zip openvpn.zip
+initrd http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip wget-1.11.4-1-bin.zip
+initrd http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-dep.zip wget-1.11.4-1-dep.zip
 initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
 boot || goto menu
 

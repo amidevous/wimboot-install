@@ -17,14 +17,14 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain https://andykimpe.ovh/install.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/win7/win7/ipxe/install.ipxe
 
 :item2
-chain http://${server_ip}/win7/x86/ipxe/english.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/win7/win7/ipxe/english.ipxe
 
 
 :item3
-chain http://${server_ip}/win7/x86/ipxe/french.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/win7/win7/ipxe/french.ipxe
 
 :item4
 ifopen net0

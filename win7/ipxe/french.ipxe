@@ -128,8 +128,8 @@ initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/openvpn.zip openvpn.zip
-initrd https://netcologne.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip wget-1.11.4-1-bin.zip
-initrd https://netcologne.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip wget-1.11.4-1-dep.zip
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/wget-1.11.4-1-bin.zip wget-1.11.4-1-bin.zip
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/wget-1.11.4-1-dep.zip wget-1.11.4-1-dep.zip
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.wim boot.wim
 boot || goto menu
 

@@ -1,0 +1,161 @@
+#!ipxe
+set menu-timeout 30000
+#set menu-timeout 1
+set submenu-timeout ${menu-timeout}
+isset ${menu-default} || set menu-default item1
+
+menu
+item --gap --           -----------------------------------------
+item item1            	                Return
+item --gap --           -----------------------------------------
+item item2      	windows 7 Starter 32 bit Legacy English
+item item3      	windows 7 Starter 32 bit Legacy Francais
+item item4		windows 7 Home Basic 32 bit Legacy English
+item item5		windows 7 Home Basic 64 bit Legacy English
+item item6		netboot
+item shell              Shell iPXE
+item exit              	Exit
+
+choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
+
+:item1
+chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
+
+:item2
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
+initrd http://${server_ip}/win10/french/boot/bcd bcd
+initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd http://${server_ip}/win7/x86/autounattend/x86/starter/english/legacy/install.bat install.bat
+initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.cat VBoxGuest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.sys VBoxGuest.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.cat VBoxMouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.inf VBoxMouse.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.sys VBoxMouse.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.cat VBoxVideo.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.inf VBoxVideo.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.sys VBoxVideo.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.cat VBoxWddm.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.inf VBoxWddm.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
+initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/english/legacy/autounattend.xml autounattend.xml
+initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+boot || goto menu
+
+:item3
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
+initrd http://${server_ip}/win10/french/boot/bcd bcd
+initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd http://${server_ip}/win7/x86/autounattend/x86/starter/french/legacy/install.bat install.bat
+initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.cat VBoxGuest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.sys VBoxGuest.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.cat VBoxMouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.inf VBoxMouse.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.sys VBoxMouse.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.cat VBoxVideo.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.inf VBoxVideo.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.sys VBoxVideo.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.cat VBoxWddm.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.inf VBoxWddm.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
+initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
+initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+boot || goto menu
+
+
+:item4
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
+initrd http://${server_ip}/win10/french/boot/bcd bcd
+initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd http://${server_ip}/win7/x86/autounattend/x86/homebasic/english/legacy/install.bat install.bat
+initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.cat VBoxGuest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.sys VBoxGuest.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.cat VBoxMouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.inf VBoxMouse.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.sys VBoxMouse.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.cat VBoxVideo.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.inf VBoxVideo.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.sys VBoxVideo.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.cat VBoxWddm.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.inf VBoxWddm.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
+initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+boot || goto menu
+
+
+:item5
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
+initrd http://${server_ip}/win10/french/boot/bcd bcd
+initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd http://${server_ip}/win7/x86/autounattend/x64/homebasic/english/legacy/install.bat install.bat
+initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.cat VBoxGuest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.sys VBoxGuest.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.cat VBoxMouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.inf VBoxMouse.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxMouse.sys VBoxMouse.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.cat VBoxVideo.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.inf VBoxVideo.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideo.sys VBoxVideo.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.cat VBoxWddm.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.inf VBoxWddm.inf
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
+initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
+initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+boot || goto menu
+
+
+
+:item6
+ifopen net0
+#set net0/ip 10.0.0.3
+#set net0/netmask 255.255.255.0
+#set net0/gateway 10.0.0.200
+#set dns 8.8.8.8
+dhcp
+set keymap fr
+set conn_type https
+chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...
+set conn_type http
+chain --autofree http://boot.netboot.xyz/ || echo HTTP failed, localbooting...
+exit
+
+
+:shell
+shell
+
+:exit
+exit

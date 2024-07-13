@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<assembly
+    xmlns="urn:schemas-microsoft-com:asm.v3"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    authors="wedsonaf"
+    buildFilter=""
+    company="Microsoft"
+    copyright=""
+    creationTimeStamp="2005-08-09T21:00:00.993750-07:00"
+    description="Downlevel manifest for PerformanceCounterInfrastructureConsumer"
+    displayName="Downlevel manifest for PerformanceCounterInfrastructureConsumer"
+    estimatedSize=""
+    lastUpdateTimeStamp="2005-08-09T21:00:00.9993750-07:00"
+    manifestVersion="1.0"
+    owners="wedsonaf kulee"
+    supportInformation=""
+    testers="ggella"
+    >
+  <assemblyIdentity
+      buildFilter=""
+      buildType="release"
+      language="neutral"
+      name="Microsoft-Windows-PerformanceCounterInfrastructureConsumer-DL"
+      processorArchitecture="*"
+      publicKeyToken=""
+      type=""
+      version="0.0.0.0"
+      versionScope="nonSxS"
+      />
+  <migration>
+    <migXml xmlns="">
+      <rules context="System">
+        <detects>
+          <detect>
+            <condition>MigXmlHelper.IsOSEarlierThan("NT", "6.0")</condition>
+          </detect>
+        </detects>
+        <include>
+          <objectSet>
+            <pattern type="Registry">HKLM\System\CurrentControlSet\Services\SysmonLog\Log Queries\*[*]</pattern>
+          </objectSet>
+        </include>
+      </rules>
+      <plugin
+          classId="{c9c74cff-c157-415e-a94c-f8b14007c6e8}"
+          file="Microsoft-Windows-PerformanceCounterInfrastructureConsumer-DL\PlaMig.dll"
+          />
+    </migXml>
+  </migration>
+</assembly>

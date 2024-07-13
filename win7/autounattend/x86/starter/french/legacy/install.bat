@@ -98,8 +98,9 @@ mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
 mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
 7z x wget-1.11.4-1-bin.zip
 7z x wget-1.11.4-1-dep.zip
+setup-x86.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l X:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 cd s:\
-x:\Windows\System32\bin\wget.exe "https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso" -O "s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso"
+X:\Cygwin\bin\wget.exe "https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso" -O "s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso"
 7z x fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso
 rem rclone copy http:\sources s:\sources -vv
 rem start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 --vfs-cache-max-size=500M -vv

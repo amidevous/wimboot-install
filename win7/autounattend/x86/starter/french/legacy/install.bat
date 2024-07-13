@@ -4,19 +4,31 @@ pnputil /i /a x:\Windows\System32\balloon.inf
 pnputil /i /a x:\Windows\System32\netkvm.inf
 pnputil /i /a x:\Windows\System32\vioscsi.inf
 pnputil /i /a x:\Windows\System32\viostor.inf
-start net start dnscache
-@powercfg /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+pnputil /i /a x:\Windows\System32\VBoxGuest.inf
+pnputil /i /a x:\Windows\System32\e1d68x64.inf
+pnputil /i /a x:\Windows\System32\VBoxGuestEarlyNT.inf
+pnputil /i /a x:\Windows\System32\VBoxMouse.inf
+pnputil /i /a x:\Windows\System32\VBoxVideo.inf
+pnputil /i /a x:\Windows\System32\VBoxVideoEarlyNT.inf
+pnputil /i /a x:\Windows\System32\VBoxWddm.inf
+pnputil /i /a x:\Windows\System32\fwcfg.inf
+pnputil /i /a x:\Windows\System32\pvpanic-pci.inf
+pnputil /i /a x:\Windows\System32\pvpanic.inf
+pnputil /i /a x:\Windows\System32\qemupciserial.inf
+pnputil /i /a x:\Windows\System32\qxldod.inf
+pnputil /i /a x:\Windows\System32\vioprot.inf
+pnputil /i /a x:\Windows\System32\viofs.inf
+pnputil /i /a x:\Windows\System32\viogpudo.inf
+pnputil /i /a x:\Windows\System32\vioinput.inf
+pnputil /i /a x:\Windows\System32\viorng.inf
+pnputil /i /a x:\Windows\System32\vioser.inf
+net start dnscache
+rem @powercfg /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 wpeutil WaitForNetwork
 ipconfig /renew
-
-:network
-ping -n 1 google.fr | find "TTL"
-if not errorlevel 1 goto next
-if errorlevel 1 goto network
-:next
 echo select disk 0 > config.txt
 echo clean >> config.txt
-echo create partition primary size=10000 >> config.txt
+echo create partition primary size=20000 >> config.txt
 echo FORMAT QUICK FS=NTFS LABEL="System Reserved" >> config.txt
 echo assign letter="S" >> config.txt
 echo active >> config.txt
@@ -32,11 +44,32 @@ echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 regsvr32 /s winfsp-x86.dll
-rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/
-start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 --vfs-cache-max-size=500M --transfers 1 -vv
-ping -n 10 62.210.202.52
-Y:\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
+7z -x wget-1.11.4-1-bin.zip
+7z -x wget-1.11.4-1-dep.zip
 cmd
+rem rclone config create http http http=https://depot-andykimpe.sourceforge.net/win7/x86/starter url=https://depot-andykimpe.sourceforge.net/win7/x86/starter/
+rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/
+echo 195.201.179.80 andykimpe.ovh > x:\Windows\System32\Drivers\etc\hosts
+rem rclone config create http http http=http://andykimpe.ovh/starter url=http://andykimpe.ovh/starter/
+rem rclone config create ftp ftp host=195.201.179.80 user=andykimp pass=OMG*xvh0d$J.
+rem rclone config create http2 ftp host=ftpupload.net user=ezyro_36894543 pass=e452b32bf
+rem rclone config create http combine upstreams="dir1=http1:/htdocs/ dir2=http2:/htdocs/"
+rem rclone config create http http http=http://10.0.0.200/win7/x86/starter url=http://10.0.0.200/win7/x86/starter/
+rem start rclone mount 7starterx86: y: --transfers 4 --checkers 8 --vfs-cache-mode=full --dir-cache-time=5000h --poll-interval=10s --rc --rc-addr=:5572 --rc-no-auth --drive-pacer-min-sleep=10ms --drive-pacer-burst=200 --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0" --file-perms=0777 --dir-perms 0777 --network-mode -vv
+rem start rclone mount 7starterx86: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 -vv --vfs-cache-max-size=100M --vfs-cache-poll-interval 5m --bwlimit 90M --transfers 1
+mkdir s:\sources
+rclone copy http:\sources s:\sources -vv
+rem start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 --vfs-cache-max-size=500M -vv
+rem net use y: \\195.201.179.80\domains\andykimpe.ovh\public_html\starter /user:"andykimp" "OMG*xvh0d$J."
+rem FTPUSE y: 195.201.179.80 OMG*xvh0d$J. /USER:andykimp
+rem  --bwlimit 1M --buffer-size=0
+ping -n 5 62.210.202.52
+rem wimextract y:\sources\install.swm 1 / --dest-dir=w:\ --ref="y:\sources\install*.swm"
+rem s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
+cmd
+wget-1.11.4-1-bin.zip
+wget-1.11.4-1-dep.zip
+
 pause
 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"y:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 Dism /Image:W:\ /Add-Driver /Driver:VBoxGuest.inf

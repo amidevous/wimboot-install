@@ -133,7 +133,6 @@ initrd http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-dep.zip wget-1.11
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.wim boot.wim
 boot || goto menu
 
-
 :item3
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd http://${server_ip}/win10/french/boot/bcd bcd

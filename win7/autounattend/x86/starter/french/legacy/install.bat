@@ -44,8 +44,9 @@ echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 regsvr32 /s winfsp-x86.dll
-7z x wget-1.11.4-1-bin.zip
-7z x wget-1.11.4-1-dep.zip
+7z x -y wget-1.11.4-1-bin.zip
+7z x -y wget-1.11.4-1-dep.zip
+7z x -y openssl-0.9.8h-1-bin.zip
 cmd
 rem rclone config create http http http=https://depot-andykimpe.sourceforge.net/win7/x86/starter url=https://depot-andykimpe.sourceforge.net/win7/x86/starter/
 rem rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/

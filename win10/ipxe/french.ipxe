@@ -7,7 +7,7 @@ set submenu-timeout ${menu-timeout}
 set commit win7
 set winver win10
 set winversion windows7
-set winedition family
+set winedition pro
 isset ${menu-default} || set menu-default item1
 
 menu

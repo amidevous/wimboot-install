@@ -96,8 +96,8 @@ rem mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
 rem mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
 setup-x86.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 rem cd s:\
-S:\Cygwin\bin\wget.exe "https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso" -O "s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso"
-7z x fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso
+S:\Cygwin\bin\wget.exe https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso -O s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso
+7z x s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso -o s:\
 rem rclone copy http:\sources s:\sources -vv
 rem start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mode --buffer-size=0 --vfs-cache-max-size=500M -vv
 rem net use y: \\195.201.179.80\domains\andykimpe.ovh\public_html\starter /user:"andykimp" "OMG*xvh0d$J."

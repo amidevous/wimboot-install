@@ -73,43 +73,43 @@ if exist x:\Windows\System32\netkvm.inf wget %giturl%/raw/%gitbcommit%/win10/drv
 if exist x:\Windows\System32\netkvm.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/NetKVM/%winversionmin%/%arch2%/netkvm.inf -O x:\Windows\System32\netkvm.inf
 if exist x:\Windows\System32\netkvm.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/NetKVM/%winversionmin%/%arch2%/netkvm.sys -O x:\Windows\System32\netkvm.sys
 if exist x:\Windows\System32\netkvm.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\netkvm.inf
-if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.cat -O x:\Windows\System32\viostor.cat
-if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.inf -O x:\Windows\System32\viostor.inf
-if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.sys -O x:\Windows\System32\viostor.sys
-if exist x:\Windows\System32\viostor.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viostor.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.cat -O x:\Windows\System32\viostor.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.inf -O x:\Windows\System32\viostor.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\viostor.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viostor/%winversionmin%/%arch2%/viostor.sys -O x:\Windows\System32\viostor.sys
+if %gitbcommit%==win10 if exist x:\Windows\System32\viostor.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viostor.inf
 if exist x:\Windows\System32\VBoxGuest.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxGuest.inf
 if exist x:\Windows\System32\VBoxGuestEarlyNT.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxGuestEarlyNT.inf
 if exist x:\Windows\System32\VBoxMouse.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxMouse.inf
 if exist x:\Windows\System32\VBoxVideo.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxVideo.inf
 if exist x:\Windows\System32\VBoxVideoEarlyNT.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxVideoEarlyNT.inf
 if exist x:\Windows\System32\VBoxWddm.inf.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\VBoxWddm.inf
-if %gitbcommit%==win10  if exist x:\Windows\System32\fwcfg.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\fwcfg.inf
-if %gitbcommit%==win10  if exist x:\Windows\System32\pvpanic-pci.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\pvpanic-pci.inf
-if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.cat -O x:\Windows\System32\pvpanic.cat
-if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.inf -O x:\Windows\System32\pvpanic.inf
-if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.cat -O x:\Windows\System32\pvpanic.cat
-if exist x:\Windows\System32\pvpanic.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\pvpanic.inf
-if exist x:\Windows\System32\qemupciserial.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qemupciserial/%winversionmin%/%arch2%/qemupciserial.inf -O x:\Windows\System32\qemupciserial.inf
-if exist x:\Windows\System32\qemupciserial.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qemupciserial/%winversionmin%/%arch2%/qemupciserial.cat -O x:\Windows\System32\qemupciserial.cat
-if exist x:\Windows\System32\qemupciserial.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\qemupciserial.inf
-if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qxl.cat -O x:\Windows\System32\qxl.cat
-if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qxl.inf -O x:\Windows\System32\qxl.inf
-if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qemupciserial.cat -O x:\Windows\System32\qemupciserial.cat
-if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\qxl.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\fwcfg.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\fwcfg.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\pvpanic-pci.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\pvpanic-pci.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.cat -O x:\Windows\System32\pvpanic.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.inf -O x:\Windows\System32\pvpanic.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\pvpanic.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/pvpanic/%winversionmin%/%arch2%/pvpanic.cat -O x:\Windows\System32\pvpanic.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\pvpanic.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\pvpanic.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\qemupciserial.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qemupciserial/%winversionmin%/%arch2%/qemupciserial.inf -O x:\Windows\System32\qemupciserial.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\qemupciserial.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qemupciserial/%winversionmin%/%arch2%/qemupciserial.cat -O x:\Windows\System32\qemupciserial.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\qemupciserial.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\qemupciserial.inf
+rem if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qxl.cat -O x:\Windows\System32\qxl.cat
+rem if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qxl.inf -O x:\Windows\System32\qxl.inf
+rem if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/qxl/%winversionmin%/%arch2%/qemupciserial.cat -O x:\Windows\System32\qemupciserial.cat
+rem if %gitbcommit%==win7 if exist x:\Windows\System32\qxldod.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\qxl.inf
 if %gitbcommit%==win10 if exist x:\Windows\System32\qxldod.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\qxldod.inf
 if %gitbcommit%==win10 if exist x:\Windows\System32\vioprot.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\vioprot.inf
 if %gitbcommit%==win10 if exist x:\Windows\System32\viofs.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viofs.inf
 if %gitbcommit%==win10 if exist x:\Windows\System32\viogpudo.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viogpudo.inf
-if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.cat -O x:\Windows\System32\vioinput.cat
-if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.inf -O x:\Windows\System32\vioinput.inf
-if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.sys -O x:\Windows\System32\vioinput.sys
-if exist x:\Windows\System32\vioinput.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\vioinput.inf
-if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/viorng.cat -O x:\Windows\System32\viorng.cat
-if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/viorng.inf -O x:\Windows\System32\viorng.inf
-if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/vioinput.sys -O x:\Windows\System32\viorng.sys
-if exist x:\Windows\System32\viorng.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viorng.inf
-if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.cat -O x:\Windows\System32\vioser.cat
-if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.inf -O x:\Windows\System32\vioser.inf
-if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.sys -O x:\Windows\System32\vioser.sys
-if exist x:\Windows\System32\vioser.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\vioser.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.cat -O x:\Windows\System32\vioinput.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.inf -O x:\Windows\System32\vioinput.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioinput.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioinput/%winversionmin%/%arch2%/vioinput.sys -O x:\Windows\System32\vioinput.sys
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioinput.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\vioinput.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/viorng.cat -O x:\Windows\System32\viorng.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/viorng.inf -O x:\Windows\System32\viorng.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\viorng.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/viorng/%winversionmin%/%arch2%/vioinput.sys -O x:\Windows\System32\viorng.sys
+if %gitbcommit%==win10 if exist x:\Windows\System32\viorng.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\viorng.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.cat -O x:\Windows\System32\vioser.cat
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.inf -O x:\Windows\System32\vioser.inf
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioser.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/vioserial/%winversionmin%/%arch2%/vioser.sys -O x:\Windows\System32\vioser.sys
+if %gitbcommit%==win10 if exist x:\Windows\System32\vioser.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\vioser.inf
 shutdown -r -t 1

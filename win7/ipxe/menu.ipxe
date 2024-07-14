@@ -3,7 +3,7 @@ set menu-timeout 30000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
 isset ${menu-default} || set menu-default item1
-set commit c53ee58a70aafa9d61b2cfef55f8b358068d1582
+set commit 29bad4c4b6102ee36aa9e652006e67e141502a1e
 
 menu
 item --gap --           -----------------------------------------

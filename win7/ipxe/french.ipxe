@@ -4,7 +4,7 @@ set menu-timeout 30000
 set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
 set submenu-timeout ${menu-timeout}
-set commit e8ca964d155d785c1fd1c13a4b0fd0e6ad980401
+set commit d68d39ac95078200e20c39b98beffb27a3ec3ddf
 isset ${menu-default} || set menu-default item1
 
 menu
@@ -31,7 +31,7 @@ kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
 initrd https://github.com/amidevous/wimboot-install/raw/${commit}/win7/autounattend/x86/starter/french/legacy/install.bat install.bat
-initrd https://github.com/amidevous/wimboot-install/raw/${commit}/win7/winpeshl.ini winpeshl.ini
+initrd https://github.com/amidevous/wimboot-install/raw/${commit}/winpeshl.ini winpeshl.ini
 # E1D68
 # TODO 0d4f only installing drivers in winpe, not when getting into windows.
 # 15fc on T15 not working in winpe either

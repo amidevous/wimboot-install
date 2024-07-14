@@ -44,9 +44,7 @@ echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 regsvr32 /s winfsp-x86.dll
-7z x -y wget-1.11.4-1-bin.zip
-7z x -y wget-1.11.4-1-dep.zip
-7z x -y openssl-0.9.8h-1-bin.zip
+setup-x86.exe --no-admin --root %CYGWIN_BASE% --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l %CYGWIN_BASE%\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 cmd
 rem rclone config create http http http=https://depot-andykimpe.sourceforge.net/win7/x86/starter url=https://depot-andykimpe.sourceforge.net/win7/x86/starter/
 rem rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/

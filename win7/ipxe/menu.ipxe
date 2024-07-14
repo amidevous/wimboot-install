@@ -4,6 +4,8 @@ set menu-timeout 30000
 set submenu-timeout ${menu-timeout}
 isset ${menu-default} || set menu-default item1
 set commit win7
+set winver win7
+set winversion windows7
 
 menu
 item --gap --           -----------------------------------------

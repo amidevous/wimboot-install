@@ -1,6 +1,8 @@
 @echo off
 wpeinit
-pnputil /i /a x:\Windows\System32\balloon.inf
+if exist x:\Windows\System32\balloon.inf pnputil /i /a x:\Windows\System32\balloon.inf
+pause
+if exist x:\Windows\System32\balloon.inf pnputil /i /a x:\Windows\System32\balloon.inf
 pnputil /i /a x:\Windows\System32\netkvm.inf
 pnputil /i /a x:\Windows\System32\vioscsi.inf
 pnputil /i /a x:\Windows\System32\viostor.inf
@@ -112,10 +114,10 @@ rem  --bwlimit 1M --buffer-size=0
 rem  ping -n 5 62.210.202.52
 rem wimextract y:\sources\install.swm 1 / --dest-dir=w:\ --ref="y:\sources\install*.swm"
 s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
-cmd
-pause
-Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"y:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
-Dism /Image:W:\ /Add-Driver /Driver:VBoxGuest.inf
+rem cmd
+rem pause
+rem Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"y:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
+Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\balloon.inf
 Dism /Image:W:\ /Add-Driver /Driver:VBoxGuestEarlyNT.inf
 Dism /Image:W:\ /Add-Driver /Driver:VBoxVideo.inf
 Dism /Image:W:\ /Add-Driver /Driver:VBoxVideoEarlyNT.inf

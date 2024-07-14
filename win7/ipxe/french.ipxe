@@ -5,13 +5,15 @@ set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
 set submenu-timeout ${menu-timeout}
 set commit win7
+set winver win7
+set winversion windows7
 isset ${menu-default} || set menu-default item1
 
 menu
 item --gap --           -----------------------------------------
 item item1            	                Return
 item --gap --           -----------------------------------------
-item item2      	windows 7 Starter 32 bit Legacy Francais ${pciid}
+item item2      	windows 10 Legacy manual install ${pciid}
 #item item3      	windows 7 Starter 32 bit Legacy Francais
 #item item4		windows 7 Home Basic 32 bit Legacy English
 #item item5		windows 7 Home Basic 64 bit Legacy English
@@ -22,15 +24,14 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/menu.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/${commit}/${commit}/ipxe/menu.ipxe
 
 :item2
 imgfree
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
-#kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
-initrd https://github.com/amidevous/wimboot-install/raw/${commit}/win7/autounattend/x86/starter/french/legacy/install.bat install.bat
+initrd https://github.com/amidevous/wimboot-install/releases/download/${winversion}/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/${winversion}/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd https://github.com/amidevous/wimboot-install/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winpe.jpg || echo no background - ignored
 initrd --name winre.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winre.jpg || echo no background - ignored

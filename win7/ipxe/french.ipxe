@@ -3,7 +3,7 @@ set menu-timeout 30000
 #set menu-timeout 1
 set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
-set submenu-timeout ${menu-timeout}
+set submenu-timeout ${menu-timeout} 
 set commit win7
 isset ${menu-default} || set menu-default item1
 

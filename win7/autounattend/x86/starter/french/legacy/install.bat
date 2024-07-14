@@ -58,10 +58,10 @@ S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install3.swm -O s
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install4.swm -O s:\sources\install4.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install5.swm -O s:\sources\install5.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install6.swm -O s:\sources\install6.swm
-rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install7.swm -O s:\sources\install7.swm
-rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install8.swm -O s:\sources\install8.swm
-rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install9.swm -O s:\sources\install9.swm
-rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install10.swm -O s:\sources\install10.swm
+S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install7.swm -O s:\sources\install7.swm
+S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install8.swm -O s:\sources\install8.swm
+S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install9.swm -O s:\sources\install9.swm
+S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install10.swm -O s:\sources\install10.swm
 s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 if %gitbcommit%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf

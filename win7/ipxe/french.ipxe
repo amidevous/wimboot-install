@@ -29,7 +29,7 @@ kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui
 #kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
-initrd https://raw.githubusercontent.com/amidevous/wimboot-install/win7/win7/autounattend/x86/starter/french/legacy/install.bat install.bat
+initrd https://github.com/amidevous/wimboot-install/raw/6db99f3e5a69e3ca388d4a24896d32943f68650f/win7/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd https://github.com/amidevous/wimboot-install/raw/win7/winpeshl.ini winpeshl.ini
 # E1D68
 # TODO 0d4f only installing drivers in winpe, not when getting into windows.

@@ -4,7 +4,7 @@ set menu-timeout 30000
 set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
 set submenu-timeout ${menu-timeout}
-set commit 44c612611516921c6d381c44d17853b7a6ce17c9
+set commit 8d8cd5ff8a52cb7e5616793f1a9888c5ec79406e
 isset ${menu-default} || set menu-default item1
 
 menu

@@ -1,8 +1,8 @@
 @echo off
 wpeinit
-set giturl=https://github.com/amidevous/wimboot-install/
+set giturl=https://github.com/amidevous/wimboot-install
 set gitbcommit=win7
-set winversion=windown7
+set winversion=windows7
 set winversionmin=w7
 set arch1=x86
 set arch2=x86

@@ -44,8 +44,8 @@ echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 regsvr32 /s winfsp-x86.dll
-setup-x86.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l X:\Cygwin\\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-cmd
+rem setup-x86.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l X:\Cygwin\\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
+rem cmd
 rem rclone config create http http http=https://depot-andykimpe.sourceforge.net/win7/x86/starter url=https://depot-andykimpe.sourceforge.net/win7/x86/starter/
 rem rclone config create http http http=http://62.210.202.52/win7/x86 url=http://62.210.202.52/win7/x86/
 rem echo 195.201.179.80 andykimpe.ovh > x:\Windows\System32\Drivers\etc\hosts
@@ -59,43 +59,43 @@ rem start rclone mount 7starterx86: y: --file-perms=0777 --dir-perms 0777 --netw
 
 
 
-mkdir s:\sources\
-mkdir s:\sources\dlmanifests\
-mkdir s:\sources\bitsextensions-server\
-mkdir s:\sources\microsoft-activedirectory-webservices-dl\
-mkdir s:\sources\microsoft-windows-adfs-dl\
-mkdir s:\sources\microsoft-windows-bluetooth-config\
-mkdir s:\sources\microsoft-windows-com-complus-setup-dl\
-mkdir s:\sources\microsoft-windows-com-dtc-setup-dl\
-mkdir s:\sources\microsoft-windows-dhcpservermigplugin-dl\
-mkdir s:\sources\microsoft-windows-directoryservices-adam-dl\
-mkdir s:\sources\microsoft-windows-iasserver-migplugin\
-mkdir s:\sources\microsoft-windows-iasserver-migplugin\en-us\
-mkdir s:\sources\microsoft-windows-ie-clientnetworkprotocolimplementation\
-mkdir s:\sources\microsoft-windows-iis-dl\
-mkdir s:\sources\microsoft-windows-international-core-dl\
-mkdir s:\sources\microsoft-windows-internet-naming-service-runtime\
-mkdir s:\sources\microsoft-windows-mediaplayer-drm-dl\
-mkdir s:\sources\microsoft-windows-mediaplayer\
-mkdir s:\sources\microsoft-windows-msmq-messagingcoreservice\
-mkdir s:\sources\microsoft-windows-ndis\
-mkdir s:\sources\microsoft-windows-networkbridge\
-mkdir s:\sources\microsoft-windows-networkloadbalancing-core\
-mkdir s:\sources\microsoft-windows-offlinefiles-dl\
-mkdir s:\sources\microsoft-windows-performancecounterinfrastructure-dl\
-mkdir s:\sources\microsoft-windows-performancecounterinfrastructureconsumer-dl\
-mkdir s:\sources\microsoft-windows-rasconnectionmanager\
-mkdir s:\sources\microsoft-windows-rasserver-migplugin\
-mkdir s:\sources\microsoft-windows-shmig-dl\
-mkdir s:\sources\microsoft-windows-storagemigration\
-mkdir s:\sources\microsoft-windows-storagemigration\en-us\
-mkdir s:\sources\microsoft-windows-sxs\
-mkdir s:\sources\microsoft-windows-tapisetup\
-mkdir s:\sources\microsoft-windows-terminalservices-licenseserver\
-mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
-mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
+rem mkdir s:\sources\
+rem mkdir s:\sources\dlmanifests\
+rem mkdir s:\sources\bitsextensions-server\
+rem mkdir s:\sources\microsoft-activedirectory-webservices-dl\
+rem mkdir s:\sources\microsoft-windows-adfs-dl\
+rem mkdir s:\sources\microsoft-windows-bluetooth-config\
+rem mkdir s:\sources\microsoft-windows-com-complus-setup-dl\
+rem mkdir s:\sources\microsoft-windows-com-dtc-setup-dl\
+rem mkdir s:\sources\microsoft-windows-dhcpservermigplugin-dl\
+rem mkdir s:\sources\microsoft-windows-directoryservices-adam-dl\
+rem mkdir s:\sources\microsoft-windows-iasserver-migplugin\
+rem mkdir s:\sources\microsoft-windows-iasserver-migplugin\en-us\
+rem mkdir s:\sources\microsoft-windows-ie-clientnetworkprotocolimplementation\
+rem mkdir s:\sources\microsoft-windows-iis-dl\
+rem mkdir s:\sources\microsoft-windows-international-core-dl\
+rem mkdir s:\sources\microsoft-windows-internet-naming-service-runtime\
+rem mkdir s:\sources\microsoft-windows-mediaplayer-drm-dl\
+rem mkdir s:\sources\microsoft-windows-mediaplayer\
+rem mkdir s:\sources\microsoft-windows-msmq-messagingcoreservice\
+rem mkdir s:\sources\microsoft-windows-ndis\
+rem mkdir s:\sources\microsoft-windows-networkbridge\
+rem mkdir s:\sources\microsoft-windows-networkloadbalancing-core\
+rem mkdir s:\sources\microsoft-windows-offlinefiles-dl\
+rem mkdir s:\sources\microsoft-windows-performancecounterinfrastructure-dl\
+rem mkdir s:\sources\microsoft-windows-performancecounterinfrastructureconsumer-dl\
+rem mkdir s:\sources\microsoft-windows-rasconnectionmanager\
+rem mkdir s:\sources\microsoft-windows-rasserver-migplugin\
+rem mkdir s:\sources\microsoft-windows-shmig-dl\
+rem mkdir s:\sources\microsoft-windows-storagemigration\
+rem mkdir s:\sources\microsoft-windows-storagemigration\en-us\
+rem mkdir s:\sources\microsoft-windows-sxs\
+rem mkdir s:\sources\microsoft-windows-tapisetup\
+rem mkdir s:\sources\microsoft-windows-terminalservices-licenseserver\
+rem mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
+rem mkdir s:\sources\microsoft-windows-textservicesframework-migration-dl\
 setup-x86.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/ -l X:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-cd s:\
+rem cd s:\
 X:\Cygwin\bin\wget.exe "https://archive.org/download/windows_7_professional_with_sp1_original_latest_iso_multilanguage/fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso" -O "s:\fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso"
 7z x fr_windows_7_professional_with_sp1_x86_dvd_u_677092.iso
 rem rclone copy http:\sources s:\sources -vv
@@ -103,7 +103,7 @@ rem start rclone mount http: y: --file-perms=0777 --dir-perms 0777 --network-mod
 rem net use y: \\195.201.179.80\domains\andykimpe.ovh\public_html\starter /user:"andykimp" "OMG*xvh0d$J."
 rem FTPUSE y: 195.201.179.80 OMG*xvh0d$J. /USER:andykimp
 rem  --bwlimit 1M --buffer-size=0
-ping -n 5 62.210.202.52
+rem  ping -n 5 62.210.202.52
 rem wimextract y:\sources\install.swm 1 / --dest-dir=w:\ --ref="y:\sources\install*.swm"
 s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 cmd

@@ -50,7 +50,8 @@ echo exit >> config.txt
 diskpart /s config.txt
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 rem cd s:\
-S:\Cygwin\bin\wget.exe https://archive.org/download/Win10_22H2_Official_ISO/Win10_22H2_English_x32v1.iso -O s:\%gitbcommit%min.iso
+rem S:\Cygwin\bin\wget.exe https://archive.org/download/Win10_22H2_Official_ISO/Win10_22H2_English_x32v1.iso -O s:\%gitbcommit%min.iso
+S:\Cygwin\bin\wget.exe "https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x32v1.iso?t=093baf2b-0294-48b4-a3c1-299d4144fb99&P1=1720982134&P2=601&P3=2&P4=Vt7kJW%2bHiq5FnBioLAUTLGF7qDCfwZTnVhZhxbIK5zFcr43wSYaKyJzUX4VyAEwKpkBuquvRFgJBB6%2bkys4QVPaxbbE7M9RCBRI6VWF8PH%2fxOT1xGH8MXoMQbXpggQge6CUas4RpfuS4GR%2btf5tMFYoWuPK6bANc7DEf3ex6jfj7ZzxlcafIiF2qzjonPplIhwPeKa8QVzSa7THirxW%2fRGCjrnvWA94eHCRAPQoS5nySPM2BE%2bQgb9Z%2frC0NFBTWKs9TKrpaFoT8lnaNDmCbqE0T9%2f%2fb05dMAce%2btRcwvQjXcc90BMYFAYYhYyW4ZV6ya%2bDtXa8udDpsIBBTjhi24w%3d%3d" -O s:\%gitbcommit%min.iso
 7z x -y s:\%gitbcommit%min.iso -os:\
 rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install.swm -O s:\sources\install.swm
 rem S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install2.swm -O s:\sources\install2.swm

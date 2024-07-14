@@ -1,5 +1,5 @@
 @echo off
-wpeinit 
+wpeinit
 pnputil /i /a x:\Windows\System32\balloon.inf
 pnputil /i /a x:\Windows\System32\netkvm.inf
 pnputil /i /a x:\Windows\System32\vioscsi.inf

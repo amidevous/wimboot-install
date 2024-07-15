@@ -25,7 +25,7 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain https://github.com/amidevous/wimboot-install/raw/${commit}/${commit}/ipxe/menu.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/${commit}/${winver}/ipxe/menu.ipxe
 
 :item2
 imgfree
@@ -34,9 +34,9 @@ initrd https://github.com/amidevous/wimboot-install/releases/download/${winversi
 initrd https://github.com/amidevous/wimboot-install/releases/download/${winversion}/boot.sdi boot.sdi
 initrd https://github.com/amidevous/wimboot-install/raw/${commit}/${winver}/autounattend/x86/${winedition}/french/legacy/install.bat install.bat
 initrd https://github.com/amidevous/wimboot-install/raw/${commit}/winpeshl.ini winpeshl.ini
-initrd --name winpe.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winpe.jpg || echo no background - ignored
-initrd --name winre.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winre.jpg || echo no background - ignored
-initrd --name setup.bmp https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg setup.bmp || echo no background - ignored
+initrd --name winpe.jpg https://github.com/amidevous/wimboot-install/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
+initrd --name winre.jpg https://github.com/amidevous/wimboot-install/raw/${commit}/win10/winpe.jpg winre.jpg || echo no background - ignored
+initrd --name setup.bmp https://github.com/amidevous/wimboot-install/raw/${commit}/win10/winpe.jpg setup.bmp || echo no background - ignored
 # E1D68
 # TODO 0d4f only installing drivers in winpe, not when getting into windows.
 # 15fc on T15 not working in winpe either

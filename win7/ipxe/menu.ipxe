@@ -1,0 +1,51 @@
+#!ipxe
+set menu-timeout 30000
+#set menu-timeout 1
+set submenu-timeout ${menu-timeout}
+isset ${menu-default} || set menu-default item1
+set commit win7
+set winver win7
+set winversion windows7
+
+menu
+item --gap --           -----------------------------------------
+item item1            	                Return
+item --gap --           -----------------------------------------
+item item2      	windows 7 English
+item item3		windows 7 French
+item item4		netboot
+item shell              Shell iPXE
+item exit              	Exit
+
+choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
+
+:item1
+chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/install.ipxe
+
+:item2
+chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/english.ipxe
+
+
+:item3
+chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/french.ipxe
+
+:item4
+ifopen net0
+#set net0/ip 10.0.0.3
+#set net0/netmask 255.255.255.0
+#set net0/gateway 10.0.0.200
+#set dns 8.8.8.8
+dhcp
+set keymap fr
+set conn_type https
+chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...
+set conn_type http
+chain --autofree http://boot.netboot.xyz/ || echo HTTP failed, localbooting...
+exit
+
+
+:shell
+shell
+
+:exit
+exit

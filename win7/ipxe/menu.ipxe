@@ -6,6 +6,7 @@ isset ${menu-default} || set menu-default item1
 set commit main
 set winver win7
 set winversion windows7
+set giturl https://github.com/amidevous/wimboot-install
 
 menu
 item --gap --           -----------------------------------------
@@ -20,21 +21,16 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/install.ipxe
+chain ${giturl}/raw/${commit}/install.ipxe
 
 :item2
-chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/english.ipxe
+chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe
 
 
 :item3
-chain https://github.com/amidevous/wimboot-install/raw/${commit}/win7/ipxe/french.ipxe
+chain ${giturl}/raw/${commit}/${winver}/ipxe/french.ipxe
 
 :item4
-ifopen net0
-#set net0/ip 10.0.0.3
-#set net0/netmask 255.255.255.0
-#set net0/gateway 10.0.0.200
-#set dns 8.8.8.8
 dhcp
 set keymap fr
 set conn_type https

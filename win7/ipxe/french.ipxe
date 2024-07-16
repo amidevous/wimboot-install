@@ -15,8 +15,7 @@ menu
 item --gap --           -----------------------------------------
 item item1            	                Return
 item --gap --           -----------------------------------------
-item item2      	windows 7 Legacy manual install ${pciid}
-item item3      	windows 7 Starter 32 bit Legacy Francais
+item item2      	windows 7 Starter 32 bit Legacy Francais
 #item item4		windows 7 Home Basic 32 bit Legacy English
 #item item5		windows 7 Home Basic 64 bit Legacy English
 #item item6		netboot
@@ -31,9 +30,9 @@ chain ${giturl}/raw/${commit}/${winver}/ipxe/menu.ipxe
 :item2
 imgfree
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
-initrd ${giturl}/releases/download/windows10/bcd bcd
-initrd ${giturl}/releases/download/windows10/boot.sdi boot.sdi
-initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/manual.bat install.bat
+initrd ${giturl}/releases/download/${winversion}/bcd bcd
+initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
+initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
 initrd --name winre.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winre.jpg || echo no background - ignored
@@ -72,9 +71,9 @@ initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.cat  viostor.cat ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.inf  viostor.inf ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.sys  viostor.sys ||
-initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat fwcfg.cat ||
-initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf fwcfg.inf ||
-initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys fwcfg.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat fwcfg.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf fwcfg.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys fwcfg.sys ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
@@ -135,8 +134,22 @@ initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
-initrd ${giturl}/releases/download/windows10/boot.wim boot.wim
+initrd ${giturl}/releases/download/${winversion}/boot.wim boot.wim
 boot || goto menu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 :item3
 imgfree

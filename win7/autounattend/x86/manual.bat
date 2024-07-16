@@ -28,7 +28,6 @@ if exist x:\Windows\System32\viogpudo.inf pnputil /i /a x:\Windows\System32\viog
 if exist x:\Windows\System32\vioinput.inf pnputil /i /a x:\Windows\System32\vioinput.inf
 if exist x:\Windows\System32\viorng.inf pnputil /i /a x:\Windows\System32\viorng.inf
 if exist x:\Windows\System32\vioser.inf pnputil /i /a x:\Windows\System32\vioser.inf
-ipconfig
 setlocal enableDelayedExpansion
 for /f "delims=" %%a in ('ipconfig /all') do (
     set line=%%a
@@ -41,12 +40,13 @@ for /f "delims=" %%a in ('ipconfig /all') do (
             set mac=%%d
             set mac=!mac:*: =!
             echo !name!: !mac!
-            if "%mac%"=="52:54:00:01:13:9E" (
+            if "!mac!"=="52:54:00:01:13:9E" (
                 netsh interface ipv4 set address name="Ethernet" static 163.172.118.206 mask=255.255.255.255 gateway=62.210.202.1 10
             )
         )
     )
 )
+ipconfig
 cmd
 
 net start dnscache

@@ -43,18 +43,17 @@ for /f "delims=" %%a in ('ipconfig /all') do (
             if "!mac!"=="52-54-00-01-13-9E" (
                 netsh interface ipv4 set address name="Ethernet" static 163.172.118.206 mask=255.255.255.255 gateway=62.210.202.1 10
             )
+            else (
+                ipconfig /renew
+            )
         )
     )
 )
-ipconfig
-cmd
-
 net start dnscache
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
 netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
 ipconfig /flushdns﻿
 wpeutil WaitForNetwork
-ipconfig /renew
 echo select disk 0 > config.txt
 echo clean >> config.txt
 echo create partition primary size=20000 >> config.txt

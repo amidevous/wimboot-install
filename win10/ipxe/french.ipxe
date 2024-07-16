@@ -4,9 +4,9 @@ set menu-timeout 30000
 set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
 set submenu-timeout ${menu-timeout}
-set commit win7
+set commit main
 set winver win10
-set winversion windows7
+set winversion windows10
 set winedition pro
 isset ${menu-default} || set menu-default item1
 

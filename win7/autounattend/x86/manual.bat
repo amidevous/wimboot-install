@@ -48,6 +48,8 @@ echo set id=27 >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
+ping -n 1 google.fr
+cmd
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 rem cd s:\
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%gitbcommit%min%arch1%.iso -O s:\%gitbcommit%min%arch1%.iso

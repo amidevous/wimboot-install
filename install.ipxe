@@ -21,7 +21,6 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-dhcp
 sanboot --no-describe --drive 0x80
 
 :item2

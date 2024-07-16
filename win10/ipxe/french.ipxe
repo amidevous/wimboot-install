@@ -32,7 +32,7 @@ imgfree
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
 initrd https://github.com/amidevous/wimboot-install/releases/download/${winversion}/bcd bcd
 initrd https://github.com/amidevous/wimboot-install/releases/download/${winversion}/boot.sdi boot.sdi
-initrd https://github.com/amidevous/wimboot-install/raw/${commit}/${winver}/autounattend/x86/${winedition}/french/legacy/install.bat install.bat
+https://github.com/amidevous/wimboot-install/raw/${commit}/${winver}/autounattend/x86/manual.bat install.bat
 initrd https://github.com/amidevous/wimboot-install/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winpe.jpg || echo no background - ignored
 initrd --name winre.jpg https://github.com/amidevous/wimboot-install/raw/win7/win10/winpe.jpg winre.jpg || echo no background - ignored

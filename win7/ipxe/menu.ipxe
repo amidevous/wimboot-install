@@ -12,6 +12,7 @@ menu
 item --gap --           -----------------------------------------
 item item1            	                Return
 item --gap --           -----------------------------------------
+item item2      	windows 7 Legacy manual install ${pciid}
 item item3      	windows 7 English
 item item4		windows 7 French
 item item5		netboot

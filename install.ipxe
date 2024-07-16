@@ -1,0 +1,46 @@
+#!ipxe
+
+#choose keymap
+#set keymap fr
+
+set menu-timeout 30000
+#set menu-timeout 1
+set submenu-timeout ${menu-timeout}
+isset ${menu-default} || set menu-default item1
+
+menu
+item --gap --           -----------------------------------------
+item item1            	start to local drive
+item --gap --           -----------------------------------------
+item item2      	windows 7 Install
+item item3		Windows 10 Install
+item item4		netboot
+item shell              Shell iPXE
+item exit              	Exit
+
+choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
+
+:item1
+dhcp
+sanboot --no-describe --drive 0x80
+
+:item2
+chain https://github.com/amidevous/wimboot-install/raw/main/win7/ipxe/menu.ipxe
+
+
+:item3
+chain https://github.com/amidevous/wimboot-install/raw/main/win10/ipxe/french.ipxe
+
+:item4
+set conn_type https
+chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...
+set conn_type http
+chain --autofree http://boot.netboot.xyz/ || echo HTTP failed, localbooting...
+goto menu
+
+
+:shell
+shell
+
+:exit
+exit

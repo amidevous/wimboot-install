@@ -17,17 +17,17 @@ if exist x:\Windows\System32\VBoxMouse.inf pnputil /i /a x:\Windows\System32\VBo
 if exist x:\Windows\System32\VBoxVideo.inf pnputil /i /a x:\Windows\System32\VBoxVideo.inf
 if exist x:\Windows\System32\VBoxVideoEarlyNT.inf pnputil /i /a x:\Windows\System32\VBoxVideoEarlyNT.inf
 if exist x:\Windows\System32\VBoxWddm.inf pnputil /i /a x:\Windows\System32\VBoxWddm.inf
-rem if exist x:\Windows\System32\fwcfg.inf pnputil /i /a x:\Windows\System32\fwcfg.inf
-rem if exist x:\Windows\System32\pvpanic-pci.inf pnputil /i /a x:\Windows\System32\pvpanic-pci.inf
-rem if exist x:\Windows\System32\pvpanic.inf pnputil /i /a x:\Windows\System32\pvpanic.inf
-rem if exist x:\Windows\System32\qemupciserial.inf pnputil /i /a x:\Windows\System32\qemupciserial.inf
-rem if exist x:\Windows\System32\qxldod.inf pnputil /i /a x:\Windows\System32\qxldod.inf
-rem if exist x:\Windows\System32\viofs.inf pnputil /i /a x:\Windows\System32\vioprot.inf
-rem if exist x:\Windows\System32\viofs.inf pnputil /i /a x:\Windows\System32\viofs.inf
-rem if exist x:\Windows\System32\viogpudo.inf pnputil /i /a x:\Windows\System32\viogpudo.inf
-rem if exist x:\Windows\System32\vioinput.inf pnputil /i /a x:\Windows\System32\vioinput.inf
-rem if exist x:\Windows\System32\viorng.inf pnputil /i /a x:\Windows\System32\viorng.inf
-rem if exist x:\Windows\System32\vioser.inf pnputil /i /a x:\Windows\System32\vioser.inf
+if exist x:\Windows\System32\fwcfg.inf pnputil /i /a x:\Windows\System32\fwcfg.inf
+if exist x:\Windows\System32\pvpanic-pci.inf pnputil /i /a x:\Windows\System32\pvpanic-pci.inf
+if exist x:\Windows\System32\pvpanic.inf pnputil /i /a x:\Windows\System32\pvpanic.inf
+if exist x:\Windows\System32\qemupciserial.inf pnputil /i /a x:\Windows\System32\qemupciserial.inf
+if exist x:\Windows\System32\qxldod.inf pnputil /i /a x:\Windows\System32\qxldod.inf
+if exist x:\Windows\System32\viofs.inf pnputil /i /a x:\Windows\System32\vioprot.inf
+if exist x:\Windows\System32\viofs.inf pnputil /i /a x:\Windows\System32\viofs.inf
+if exist x:\Windows\System32\viogpudo.inf pnputil /i /a x:\Windows\System32\viogpudo.inf
+if exist x:\Windows\System32\vioinput.inf pnputil /i /a x:\Windows\System32\vioinput.inf
+if exist x:\Windows\System32\viorng.inf pnputil /i /a x:\Windows\System32\viorng.inf
+if exist x:\Windows\System32\vioser.inf pnputil /i /a x:\Windows\System32\vioser.inf
 net start dnscache
 wpeutil WaitForNetwork
 ipconfig /renew

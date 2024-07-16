@@ -29,18 +29,13 @@ if exist x:\Windows\System32\vioinput.inf pnputil /i /a x:\Windows\System32\vioi
 if exist x:\Windows\System32\viorng.inf pnputil /i /a x:\Windows\System32\viorng.inf
 if exist x:\Windows\System32\vioser.inf pnputil /i /a x:\Windows\System32\vioser.inf
 ipconfig
+getmac /fo csv /nh /v
 cmd
-
-
-netsh interface ipv4 set address name="!adapterName!" static 163.172.118.206 mask=255.255.255.255 gateway=62.210.202.1 10
-
-netsh interface ipv4 set dns name="!adapterName!" static 8.8.8.8 primary
-netsh interface ipv4 add dns name="!adapterName!" 8.0.8.0 index=2
-netsh interface ipv4 set winsservers name="!adapterName!" static 8.8.8.8
-netsh interface ipv4 add winsservers name="!adapterName!" 8.0.8.0 index=2
-
-ipconfig /flushdns﻿
+netsh interface ipv4 set address name="Ethernet" static 163.172.118.206 mask=255.255.255.255 gateway=62.210.202.1 10
 net start dnscache
+netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
+netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
+ipconfig /flushdns﻿
 wpeutil WaitForNetwork
 ipconfig /renew
 echo select disk 0 > config.txt

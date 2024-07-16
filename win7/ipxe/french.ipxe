@@ -72,35 +72,50 @@ initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w7/x86/v
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.cat  viostor.cat ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.inf  viostor.inf ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.sys  viostor.sys ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
+#win 8 minimum
+#initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat fwcfg.cat ||
+#initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf fwcfg.inf ||
+#initrd ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys fwcfg.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w7/x86/pvpanic.cat  pvpanic.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w7/x86/pvpanic.inf  pvpanic.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w7/x86/pvpanic.sys  pvpanic.sys ||
+#win 8 minimum
+#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w8/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
+#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w8/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
+#win 10 minimum
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.cat  qemupciserial.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.inf  qemupciserial.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w7/x86/qemupciserial.cat  qemupciserial.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w7/x86/qemupciserial.inf  qemupciserial.inf ||
+#win 8 minimum
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.cat  qxldod.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.inf  qxldod.inf ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.sys  qxldod.sys ||
+# for win7
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxl/w7/x86/qxl.cat  qxl.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxl/w7/x86/qxl.inf  qxl.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxl/w7/x86/qxl.sys  qxl.sys ||
+#win 8 minimum
 #initrd     ${giturl}/raw/${commit}/win10/drv/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.cat  vioprot.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.inf  vioprot.inf ||
+#win 8 minimum
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.cat  viofs.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.inf  viofs.inf ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.sys  viofs.sys ||
+#win 8 minimum
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.cat  viogpudo.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.inf  viogpudo.inf ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.sys  viogpudo.sys ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.cat  vioinput.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.inf  vioinput.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.sys  vioinput.sys ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.cat  viorng.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.inf  viorng.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.sys  viorng.sys ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
+#win 8 minimum
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w7/x86/vioinput.cat  vioinput.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w7/x86/vioinput.inf  vioinput.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w7/x86/vioinput.sys  vioinput.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w7/x86/viorng.cat  viorng.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w7/x86/viorng.inf  viorng.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w7/x86/viorng.sys  viorng.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w7/x86/vioser.cat  vioser.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w7/x86/vioser.inf  vioser.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w7/x86/vioser.sys  vioser.sys ||
 goto skip_virtio
 :skip_virtio
 iseq ${pciid} 8086100e && goto use_vbox ||

@@ -4,6 +4,7 @@ set giturl=https://github.com/amidevous/wimboot-install
 set gitbcommit=main
 set winversion=windows7
 set winversionmin=w7
+set isoversionmin=win7
 set arch1=x86
 set arch2=x86
 set cygmirror=https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/
@@ -73,8 +74,7 @@ echo exit >> config.txt
 diskpart /s config.txt
 ping -n 1 google.fr
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-cmd
-S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%gitbcommit%min%arch1%.iso -O s:\%gitbcommit%min%arch1%.iso
+S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%isoversionmin%min%arch1%.iso -O s:\%isoversionmin%min%arch1%.iso
 7z x -y s:\%gitbcommit%min%arch1%.iso -os:\
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install2.swm -O s:\sources\install2.swm

@@ -31,7 +31,6 @@ chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe
 chain ${giturl}/raw/${commit}/${winver}/ipxe/french.ipxe
 
 :item4
-dhcp
 set keymap fr
 set conn_type https
 chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...

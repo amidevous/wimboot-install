@@ -12,9 +12,9 @@ menu
 item --gap --           -----------------------------------------
 item item1            	                Return
 item --gap --           -----------------------------------------
-item item2      	windows 7 English
-item item3		windows 7 French
-item item4		netboot
+item item3      	windows 7 English
+item item4		windows 7 French
+item item5		netboot
 item shell              Shell iPXE
 item exit              	Exit
 
@@ -23,15 +23,16 @@ choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${targ
 :item1
 chain ${giturl}/raw/${commit}/install.ipxe
 
-:item2
-chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe
 
 
 :item3
-chain ${giturl}/raw/${commit}/${winver}/ipxe/french.ipxe
+chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe
+
 
 :item4
-set keymap fr
+chain ${giturl}/raw/${commit}/${winver}/ipxe/french.ipxe
+
+:item5
 set conn_type https
 chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...
 set conn_type http

@@ -7,7 +7,7 @@ set submenu-timeout ${menu-timeout}
 set commit main
 set winver win10
 set winversion windows10
-set winedition pro
+set giturl https://github.com/amidevous/wimboot-install
 isset ${menu-default} || set menu-default item1
 
 menu

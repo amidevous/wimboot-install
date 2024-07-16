@@ -28,7 +28,7 @@ chain https://github.com/amidevous/wimboot-install/raw/main/win7/ipxe/menu.ipxe
 
 
 :item3
-chain https://github.com/amidevous/wimboot-install/raw/main/win10/ipxe/french.ipxe
+chain https://github.com/amidevous/wimboot-install/raw/main/win10/ipxe/menu.ipxe
 
 :item4
 set conn_type https

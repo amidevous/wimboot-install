@@ -28,64 +28,16 @@ if exist x:\Windows\System32\viogpudo.inf pnputil /i /a x:\Windows\System32\viog
 if exist x:\Windows\System32\vioinput.inf pnputil /i /a x:\Windows\System32\vioinput.inf
 if exist x:\Windows\System32\viorng.inf pnputil /i /a x:\Windows\System32\viorng.inf
 if exist x:\Windows\System32\vioser.inf pnputil /i /a x:\Windows\System32\vioser.inf
-@ECHO OFF
+ipconfig
+cmd
 
-SETLOCAL EnableDelayedExpansion
 
-:: Address Range to find
-SET find_command=findstr /C:"Address 1.1."
+netsh interface ipv4 set address name="!adapterName!" static 163.172.118.206 mask=255.255.255.255 gateway=62.210.202.1 10
 
-:: Set Network Settings
-SET subnet_mask=255.255.255.255
-SET network_gateway=62.210.202.1
-
-FOR /F "tokens=* delims=:" %%a IN ('IPCONFIG ^| FIND /I "ETHERNET ADAPTER"') DO (
-
-SET adapterName=%%a
-
-:: Removes "Ethernet adapter" from the front of the adapter name
-SET adapterName=!adapterName:~17!
-
-:: WinXP Remove some weird trailing chars (don't know what they are)
-FOR /l %%a IN (1,1,255) DO IF NOT "!adapterName:~-1!"==":" SET adapterName=!adapterName:~0,-1!
-
-:: Removes the colon from the end of the adapter name
-SET adapterName=!adapterName:~0,-1!
-
-:: Set the netsh command
-set netsh_command=netsh interface ipv4 show ipaddress interface="!adapterName!"
-
-:: Find IP address for the current Adapter
-FOR /F "tokens=* delims=:" %%b IN ('!netsh_command! ^| !find_command!') DO (
-
-SET adapterAddress=%%b
-:: Removes "Address" from the front of the IP line
-
-SET adapterAddress=!adapterAddress:~8!
-:: Removes everything after the address from the end of the IP line
-
-FOR /l %%c IN (1,1,255) DO IF NOT "!adapterAddress:~-1!"==" " SET adapterAddress=!adapterAddress:~0,-1!
-
-)
-
-IF NOT !adapterAddress!==" " netsh interface ipv4 set address name="!adapterName!" static !adapterAddress! mask=!subnet_mask! gateway=!network_gateway! 10
-
-:: Set DNS Servers
-IF NOT !adapterAddress!==" " netsh interface ipv4 set dns name="!adapterName!" static 1.1.1.1 primary
-IF NOT !adapterAddress!==" " netsh interface ipv4 add dns name="!adapterName!" 2.2.2.2 index=2
-
-:: Set WINS Servers
-IF NOT !adapterAddress!==" " netsh interface ipv4 set winsservers name="!adapterName!" static 1.1.1.1
-IF NOT !adapterAddress!==" " netsh interface ipv4 add winsservers name="!adapterName!" 2.2.2.2 index=2
-
-:: Reset the addapter address
-SET adapterAddress=" "
-
-)
-
-:: Turn off Netbios
-wmic /interactive:off nicconfig where TcpipNetbiosOptions=0 call SetTcpipNetbios 2
-wmic /interactive:off nicconfig where TcpipNetbiosOptions=1 call SetTcpipNetbios 2
+netsh interface ipv4 set dns name="!adapterName!" static 8.8.8.8 primary
+netsh interface ipv4 add dns name="!adapterName!" 8.0.8.0 index=2
+netsh interface ipv4 set winsservers name="!adapterName!" static 8.8.8.8
+netsh interface ipv4 add winsservers name="!adapterName!" 8.0.8.0 index=2
 
 ipconfig /flushdns﻿
 net start dnscache

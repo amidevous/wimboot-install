@@ -28,7 +28,115 @@ choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${targ
 :item1
 chain ${giturl}/raw/${commit}/install.ipxe
 
-
+:item2
+imgfree
+kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
+initrd ${giturl}/releases/download/windows10/bcd bcd
+initrd ${giturl}/releases/download/windows10/boot.sdi boot.sdi
+initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/manual.bat install.bat
+initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
+initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
+initrd --name winre.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winre.jpg || echo no background - ignored
+initrd --name setup.bmp ${giturl}/raw/${commit}/win10/winpe.jpg setup.bmp || echo no background - ignored
+# E1D68
+# TODO 0d4f only installing drivers in winpe, not when getting into windows.
+# 15fc on T15 not working in winpe either
+# TODO also fix ipxe sources and test
+iseq ${pciid} 80860d4f && goto use_e1d68 ||
+iseq ${pciid} 808615fc && goto use_e1d68 ||
+iseq ${pciid} 808615bb && goto use_e1d68 ||
+iseq ${pciid} 808615be && goto use_e1d68 ||
+goto skip_e1d68
+:use_e1d68
+set startnetx ${startnetx}&drvload=e1d68x64.inf
+initrd     ${giturl}/raw/${commit}/win10/drv/i219v_e1d68/e1d68x64.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/i219v_e1d68/e1d68x64.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/i219v_e1d68/e1d68x64.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/i219v_e1d68/e1dmsg.dll ||
+:skip_e1d68
+iseq ${pciid} 1af41000 && goto use_virtio ||
+goto skip_virtio
+:use_virtio
+# without extra name wimboot crashes (in pcbios mode)
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.cat   balloon.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.inf   balloon.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.sys   balloon.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/blnsvr.exe blnsvr.exe ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.cat   netkvm.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.inf   netkvm.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvm.sys   netkvm.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/NetKVM/w10/x86/netkvmco.dll netkvmco.dll ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.cat  vioscsi.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.inf  vioscsi.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w10/x86/vioscsi.sys  vioscsi.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.cat  viostor.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.inf  viostor.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w10/x86/viostor.sys  viostor.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat fwcfg.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf fwcfg.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys fwcfg.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.inf  pvpanic.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.sys  pvpanic.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemufwcfg/w10/x86/qemufwcfg.cat  qemufwcfg.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.cat  qemupciserial.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qemupciserial/w10/x86/qemupciserial.inf  qemupciserial.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.cat  qxldod.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.inf  qxldod.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/qxldod/w10/x86/qxldod.sys  qxldod.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.cat  vioprot.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/sriov/w10/x86/vioprot.inf  vioprot.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.cat  viofs.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.inf  viofs.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viofs/w10/x86/viofs.sys  viofs.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.cat  viogpudo.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.inf  viogpudo.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viogpudo/w10/x86/viogpudo.sys  viogpudo.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.cat  vioinput.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.inf  vioinput.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioinput/w10/x86/vioinput.sys  vioinput.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.cat  viorng.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.inf  viorng.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viorng/w10/x86/viorng.sys  viorng.sys ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
+initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
+goto skip_virtio
+:skip_virtio
+iseq ${pciid} 8086100e && goto use_vbox ||
+goto skip_vbox
+:use_vbox
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxGuestEarlyNT.cat VBoxGuestEarlyNT.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxGuestEarlyNT.inf VBoxGuestEarlyNT.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxMouse.cat VBoxMouse.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxMouse.inf VBoxMouse.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxMouse.sys VBoxMouse.sys
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxVideo.cat VBoxVideo.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxVideo.inf VBoxVideo.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxVideo.sys VBoxVideo.sys
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxVideoEarlyNT.cat VBoxVideoEarlyNT.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxVideoEarlyNT.inf VBoxVideoEarlyNT.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxWddm.cat VBoxWddm.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxWddm.inf VBoxWddm.inf
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/VBoxWddm.sys VBoxWddm.sys
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/vboxguest.cat vboxguest.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
+initrd ${giturl}/raw/${commit}/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
+goto skip_vbox
+:skip_vbox
+initrd ${giturl}/raw/${commit}/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,2.dll 7-zip.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
+initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
+initrd ${giturl}/releases/download/windows10/boot.wim boot.wim
+boot || goto menu
 
 :item3
 chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe

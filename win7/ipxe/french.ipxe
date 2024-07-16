@@ -72,9 +72,6 @@ initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/vioscsi/w7/x86/v
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.cat  viostor.cat ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.inf  viostor.inf ||
 initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/viostor/w7/x86/viostor.sys  viostor.sys ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.cat  fwcfg.cat ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.inf  fwcfg.inf ||
-#initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/fwcfg/w10/x86/fwcfg.sys  fwcfg.sys ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.cat  pvpanic-pci.cat ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic-pci.inf  pvpanic-pci.inf ||
 #initrd     ${giturl}/raw/${commit}/win10/drv/virtio-win-0.1.240/pvpanic/w10/x86/pvpanic.cat  pvpanic.cat ||

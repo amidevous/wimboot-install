@@ -9,6 +9,9 @@ set submenu-timeout ${menu-timeout}
 set commit main
 set winver win7
 set winversion windows7
+set arch1 x86
+set arch2 x86
+set arch3 i386
 set lang french
 set giturl https://github.com/amidevous/wimboot-install
 
@@ -16,7 +19,7 @@ menu
 item --gap --           -----------------------------------------
 item item1            	                Return
 item --gap --           -----------------------------------------
-item item2      	windows 7 Legacy manual install ${pciid}
+item item2      	windows 7 32 bit Legacy manual install ${pciid}
 item item3      	windows 7 English
 item item4		windows 7 French
 item item5		netboot
@@ -33,7 +36,7 @@ imgfree
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd bcd
 initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
-initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86//legacy/manual.bat install.bat
+initrd ${giturl}/raw/${commit}/${winver}/autounattend/${arch1}/legacy/manual.bat install.bat
 initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
 initrd --name winre.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winre.jpg || echo no background - ignored

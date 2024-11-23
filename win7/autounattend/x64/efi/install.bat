@@ -115,7 +115,9 @@ echo create partition primary >> config.txt
 echo shrink minimum=20000 >> config.txt
 echo format quick fs=ntfs label="OS" >> config.txt
 echo assign letter="C" >> config.txt
-echo set id=4 >> config.txt
+rem set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
+echo set id="4" >> config.txt
+echo gpt attributes=0x8000000000000001 >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt

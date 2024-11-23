@@ -25,8 +25,8 @@ chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
 :item2
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd http://${server_ip}/win10/french/boot/bcd bcd
-initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/starter/english/legacy/install.bat install.bat
 initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
@@ -49,14 +49,14 @@ initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
 initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/english/legacy/autounattend.xml autounattend.xml
-initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 :item3
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd http://${server_ip}/win10/french/boot/bcd bcd
-initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
@@ -79,15 +79,15 @@ initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
 initrd http://62.210.202.52/win7/x86/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
-initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 
 :item4
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd http://${server_ip}/win10/french/boot/bcd bcd
-initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/homebasic/english/legacy/install.bat install.bat
 initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
@@ -109,15 +109,15 @@ initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
-initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 
 :item5
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd http://${server_ip}/win10/french/boot/bcd bcd
-initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x64/homebasic/english/legacy/install.bat install.bat
 initrd http://${server_ip}/WinPE_x86/winpeshl.ini winpeshl.ini
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxGuest.inf VBoxGuest.inf
@@ -139,7 +139,7 @@ initrd http://${server_ip}/VBoxWindowsAdditions-x86/VBoxWddm.sys VBoxWddm.sys
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxguest.cat vboxguest.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxmouse.cat vboxmouse.cat
 initrd http://${server_ip}/VBoxWindowsAdditions-x86/vboxwddm.cat vboxwddm.cat
-initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 

@@ -31,8 +31,8 @@ chain ${giturl}/raw/${commit}/${winver}/ipxe/menu.ipxe
 :item2
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd ${giturl}/releases/download/${winversion}/bcd bcd
-initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
@@ -135,7 +135,7 @@ initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
-initrd ${giturl}/releases/download/${winversion}/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 
@@ -144,8 +144,8 @@ boot || goto menu
 :item3
 set conn_type https
 kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd ${giturl}/releases/download/${winversion}/bcd bcd
-initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat
 initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
@@ -249,7 +249,7 @@ initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer
 initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
 #initrd ${giturl}/releases/download/windows7/openvpn.zip openvpn.zip
 initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
-initrd ${giturl}/releases/download/windows7/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 :shell

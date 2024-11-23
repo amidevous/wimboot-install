@@ -61,12 +61,19 @@ rem ipconfig /flushdns﻿
 rem pause
 wpeutil WaitForNetwork
 rem pause
-
-
-
 echo select disk 0 > config.txt
 echo clean >> config.txt
-echo Convert MBR >> config.txt
+echo exit >> config.txt
+diskpart /s config.txt
+echo "clean"
+pause
+echo select disk 0 > config.txt
+echo Convert GPT >> config.txt
+echo exit >> config.txt
+diskpart /s config.txt
+echo "Convert GPT"
+pause
+echo select disk 0 > config.txt
 echo create partition primary Size=300 >> config.txt
 echo Format Fs=NTFS Quick Label="WinPE" >> config.txt
 echo Assign Letter=A >> config.txt

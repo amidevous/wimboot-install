@@ -34,7 +34,7 @@ chain ${giturl}/raw/${commit}/install.ipxe
 
 :item2
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd bcd
 initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
 initrd ${giturl}/raw/${commit}/${winver}/autounattend/${arch1}/legacy/manual.bat install.bat

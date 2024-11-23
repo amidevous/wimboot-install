@@ -16,9 +16,7 @@ set lang french
 set giturl https://github.com/amidevous/wimboot-install
 
 menu
-item --gap --           -----------------------------------------
 item item1            	                Return
-item --gap --           -----------------------------------------
 item item2      	windows 7 32 bit Legacy manual install ${pciid}
 item item3      	windows 7 64 bit Legacy manual install ${pciid}
 item item4      	windows 7 English

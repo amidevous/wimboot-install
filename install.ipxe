@@ -1,7 +1,7 @@
 #!ipxe
 
 #choose keymap
-#set keymap fr
+set keymap fr
 
 set menu-timeout 30000
 #set menu-timeout 1
@@ -21,14 +21,16 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-sanboot --no-describe --drive 0x80
+sanboot --no-describe --drive 0
 
 :item2
-chain https://github.com/amidevous/wimboot-install/raw/main/win7/ipxe/menu.ipxe
+set conn_type https
+chain https://raw.githubusercontent.com/amidevous/wimboot-install/main/win7/ipxe/menu.ipxe
 
 
 :item3
-chain https://github.com/amidevous/wimboot-install/raw/main/win10/ipxe/menu.ipxe
+set conn_type https
+chain https://raw.githubusercontent.com/amidevous/wimboot-install/main/win10/ipxe/menu.ipxe
 
 :item4
 set conn_type https

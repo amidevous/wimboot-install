@@ -63,7 +63,7 @@ wpeutil WaitForNetwork
 rem pause
 echo select disk 0 > config.txt
 echo clean >> config.txt
-echo Convert GPT >> config.txt
+echo Convert MBR >> config.txt
 echo create partition primary Size=5120 >> config.txt
 echo Format Fs=FAT32 Quick Label="WinPE" >> config.txt
 echo Assign Letter=A >> config.txt

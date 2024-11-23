@@ -75,7 +75,7 @@ echo "Convert GPT"
 pause
 echo select disk 0 > config.txt
 echo CREATE PARTITION PRIMARY SIZE=300 >> config.txt
-echo FORMAT QUICK FS=FAT32 LABEL="Windows RE Tools partition" >> config.txt
+echo FORMAT QUICK FS=FAT32 LABEL="WindowsREToolspartition" >> config.txt
 echo Assign Letter=A >> config.txt
 echo set id=1 >> config.txt
 echo exit >> config.txt
@@ -83,7 +83,7 @@ diskpart /s config.txt
 echo "Windows RE Tools partition"
 pause
 echo select disk 0 > config.txt
-echo CREATE PARTITION EFI LABEL="System partition (ESP)" SIZE=500 >> config.txt
+echo CREATE PARTITION EFI LABEL="ESP" SIZE=500 >> config.txt
 echo Assign Letter=B >> config.txt
 echo set id=2 >> config.txt
 echo exit >> config.txt
@@ -91,7 +91,7 @@ diskpart /s config.txt
 echo "System partition (ESP)"
 pause
 echo select disk 0 > config.txt
-echo CREATE PARTITION MSR LABEL="Microsoft reserved partition (MSR)" SIZE=128 >> config.txt
+echo CREATE PARTITION MSR LABEL="MSR" SIZE=128 >> config.txt
 echo Assign Letter=D >> config.txt
 echo set id=3 >> config.txt
 echo exit >> config.txt
@@ -100,7 +100,7 @@ echo "Microsoft reserved partition (MSR)"
 pause
 echo select disk 0 > config.txt
 echo create partition PRIMARY size=20000 >> config.txt
-echo FORMAT QUICK FS=NTFS LABEL="System Reserved" >> config.txt
+echo FORMAT QUICK FS=NTFS LABEL="System" >> config.txt
 echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt
 echo active >> config.txt

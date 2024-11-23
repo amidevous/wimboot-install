@@ -5,9 +5,9 @@ set gitbcommit=main
 set winversion=windows7
 set winversionmin=w7
 set isoversionmin=win7
-set arch1=x86
-set arch2=x86
-set cygmirror=https://mirrors.kernel.org/sourceware/cygwin-archive/20221123/
+set arch1=x86_64
+set arch2=x86_64
+set cygmirror=https://mirrors.kernel.org/sourceware/cygwin/
 if exist x:\Windows\System32\e1d68x64.inf pnputil /i /a x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf pnputil /i /a x:\Windows\System32\balloon.inf
 if exist x:\Windows\System32\netkvm.inf pnputil /i /a x:\Windows\System32\netkvm.inf
@@ -50,11 +50,17 @@ for /f "delims=" %%a in ('ipconfig /all') do (
         )
     )
 )
+timeout /t 60
 net start dnscache
+timeout /t 60
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
+timeout /t 60
 netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
+timeout /t 60
 ipconfig /flushdns﻿
+timeout /t 60
 wpeutil WaitForNetwork
+timeout /t 60
 echo select disk 0 > config.txt
 echo clean >> config.txt
 echo create partition primary size=20000 >> config.txt
@@ -71,11 +77,17 @@ echo assign letter="R" >> config.txt
 echo set id=27 >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
+timeout /t 60
 diskpart /s config.txt
+timeout /t 60
 ping -n 1 google.fr
+timeout /t 60
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
+timeout /t 60
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%isoversionmin%min%arch1%.iso -O s:\%isoversionmin%min%arch1%.iso
+timeout /t 60
 7z x -y s:\%isoversionmin%min%arch1%.iso -os:\
+timeout /t 60
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install3.swm -O s:\sources\install3.swm
@@ -86,8 +98,11 @@ S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install7.swm -O s
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install8.swm -O s:\sources\install8.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install10.swm -O s:\sources\install10.swm
+timeout /t 60
 s:\sources\setup.exe /noreboot
+timeout /t 60
 if %gitbcommit%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
+timeout /t 60
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/Balloon/%winversionmin%/%arch2%/balloon.cat -O x:\Windows\System32\balloon.cat
 if exist x:\Windows\System32\balloon.inf wget %giturl%/raw/%gitbcommit%/win10/drv/virtio-win-0.1.240/Balloon/%winversionmin%/%arch2%/balloon.inf -O x:\Windows\System32\balloon.inf

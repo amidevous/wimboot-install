@@ -30,7 +30,7 @@ chain ${giturl}/raw/${commit}/${winver}/ipxe/menu.ipxe
 
 :item2
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd bcd
 initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
 initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat
@@ -143,7 +143,7 @@ boot || goto menu
 
 :item3
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd bcd
 initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
 initrd ${giturl}/raw/${commit}/${winver}/autounattend/x86/starter/french/legacy/install.bat install.bat

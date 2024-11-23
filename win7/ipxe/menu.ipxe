@@ -38,7 +38,7 @@ set conn_type https
 kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot gui quiet || shell
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
-initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/legacy/manual.bat X:\Windows\System32\install.bat
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/install.bat install.bat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/winpe.jpg || echo no background - ignored
 initrd --name winre.jpg https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/winpe.jpg || echo no background - ignored

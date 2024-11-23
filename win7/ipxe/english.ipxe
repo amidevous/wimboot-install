@@ -24,7 +24,7 @@ chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
 
 :item2
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/starter/english/legacy/install.bat install.bat
@@ -54,7 +54,7 @@ boot || goto menu
 
 :item3
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/starter/french/legacy/install.bat install.bat
@@ -85,7 +85,7 @@ boot || goto menu
 
 :item4
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x86/homebasic/english/legacy/install.bat install.bat
@@ -115,7 +115,7 @@ boot || goto menu
 
 :item5
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386
+kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot.i386 gui quiet || shell
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
 initrd http://${server_ip}/win7/x86/autounattend/x64/homebasic/english/legacy/install.bat install.bat

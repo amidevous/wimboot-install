@@ -110,7 +110,7 @@ echo "drive S"
 pause
 echo select disk 0 > config.txt
 echo create partition primary >> config.txt
-echo shrink minimum=1000 >> config.txt
+echo shrink minimum=20000 >> config.txt
 echo format quick fs=ntfs label="OS" >> config.txt
 echo assign letter="C" >> config.txt
 echo set id=4 >> config.txt

@@ -106,7 +106,7 @@ S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/dow
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O s:\sources\install10.swm
 rem pause
-s:\sources\setup.exe /noreboot
+s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 rem pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 rem pause

@@ -75,20 +75,22 @@ echo "Convert GPT"
 pause
 echo select disk 0 > config.txt
 echo CREATE PARTITION PRIMARY SIZE=300 >> config.txt
-echo FORMAT QUICK FS=FAT32 LABEL="WindowsREToolspartition" >> config.txt
+echo format quick fs=ntfs label="Windows RE tools" >> config.txt
 echo Assign Letter=A >> config.txt
-echo set id=1 >> config.txt
+set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
+gpt attributes=0x8000000000000001 >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
-echo "Windows RE Tools partition"
+echo "Windows RE tools"
 pause
 echo select disk 0 > config.txt
-echo CREATE PARTITION EFI LABEL="ESP" SIZE=500 >> config.txt
+echo create partition efi size=100 >> config.txt
+format quick fs=fat32 label="System" >> config.txt
 echo Assign Letter=B >> config.txt
 echo set id=2 >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
-echo "System partition (ESP)"
+echo "System partition (ESP/EFI)"
 pause
 echo select disk 0 > config.txt
 echo CREATE PARTITION MSR LABEL="MSR" SIZE=128 >> config.txt

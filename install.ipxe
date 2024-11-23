@@ -21,7 +21,7 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
-sanboot --no-describe --drive 0
+sanboot --no-describe --drive 1
 
 :item2
 set conn_type https

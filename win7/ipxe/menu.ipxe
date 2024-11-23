@@ -257,10 +257,10 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 goto skip_vbox
 :skip_vbox
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,2.dll 7-zip.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
-initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,1.dll 7-zip.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,1.dll 7z.dll
+initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,1.exe 7z.exe
+initrd https://www.cygwin.com/setup-x86_64.exe setup-x86_64.exe
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 

@@ -29,9 +29,11 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
+set conn_type https
 chain ${giturl}/raw/${commit}/install.ipxe
 
 :item2
+set conn_type https
 imgfree
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386 gui quiet || shell
 initrd ${giturl}/releases/download/${winversion}/bcd bcd
@@ -142,10 +144,12 @@ initrd ${giturl}/releases/download/${winversion}/boot.wim boot.wim
 boot || goto menu
 
 :item3
+set conn_type https
 chain ${giturl}/raw/${commit}/${winver}/ipxe/english.ipxe
 
 
 :item4
+set conn_type https
 chain ${giturl}/raw/${commit}/${winver}/ipxe/french.ipxe
 
 :item5

@@ -35,10 +35,10 @@ chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/mai
 
 :item2
 set conn_type https
-kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot gui quiet || shell
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
-initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/install.bat install.bat
+kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot.i386 wimboot gui quiet || shell
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd.i386 bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.i386.sdi boot.sdi
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/legacy/install.bat install.bat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/winpe.jpg || echo no background - ignored
 initrd --name winre.jpg https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/winpe.jpg || echo no background - ignored
@@ -47,21 +47,21 @@ initrd --name setup.bmp https://raw.githubusercontent.com/amidevous/wimboot-inst
 # TODO 0d4f only installing drivers in winpe, not when getting into windows.
 # 15fc on T15 not working in winpe either
 # TODO also fix ipxe sources and test
-iseq ${pciid} 80860d4f && goto use_e1d68 ||
-iseq ${pciid} 808615fc && goto use_e1d68 ||
-iseq ${pciid} 808615bb && goto use_e1d68 ||
-iseq ${pciid} 808615be && goto use_e1d68 ||
-goto skip_e1d68
-:use_e1d68
+iseq ${pciid} 80860d4f-2 && goto use_e1d68-2 ||
+iseq ${pciid} 808615fc-2 && goto use_e1d68-2 ||
+iseq ${pciid} 808615bb-2 && goto use_e1d68-2 ||
+iseq ${pciid} 808615be-2 && goto use_e1d68-2 ||
+goto skip_e1d68-2
+:use_e1d68-2
 set startnetx ${startnetx}&drvload=e1d68x64.inf
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.inf ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.sys ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1dmsg.dll ||
-:skip_e1d68
-iseq ${pciid} 1af41000 && goto use_virtio ||
-goto skip_virtio
-:use_virtio
+:skip_e1d68-2
+iseq ${pciid} 1af41000-2 && goto use_virtio-2 ||
+goto skip_virtio-2
+:use_virtio-2
 # without extra name wimboot crashes (in pcbios mode)
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.cat   balloon.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/x86/balloon.inf   balloon.inf ||
@@ -109,11 +109,11 @@ initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/head
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.cat  vioser.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.inf  vioser.inf ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/x86/vioser.sys  vioser.sys ||
-goto skip_virtio
-:skip_virtio
-iseq ${pciid} 8086100e && goto use_vbox ||
-goto skip_vbox
-:use_vbox
+goto skip_virtio-2
+:skip_virtio-2
+iseq ${pciid} 8086100e-2 && goto use_vbox-2 ||
+goto skip_vbox-2
+:use_vbox-2
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
@@ -133,13 +133,14 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxguest.cat vboxguest.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
-goto skip_vbox
-:skip_vbox
+goto skip_vbox-2
+:skip_vbox-2
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,2.dll 7-zip.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.dll 7z.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,2.exe 7z.exe
-initrd https://www.cygwin.com/setup-x86_64.exe setup-x86_64.exe
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip.dll 7-zip.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
+initrd https://www.cygwin.com/setup-x86.exe setup-x86.exe
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
@@ -172,17 +173,17 @@ iseq ${pciid} 80860d4f && goto use_e1d68 ||
 iseq ${pciid} 808615fc && goto use_e1d68 ||
 iseq ${pciid} 808615bb && goto use_e1d68 ||
 iseq ${pciid} 808615be && goto use_e1d68 ||
-goto skip_e1d68
-:use_e1d68
+goto skip_e1d68-3
+:use_e1d68-3
 set startnetx ${startnetx}&drvload=e1d68x64.inf
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.inf ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1d68x64.sys ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/i219v_e1d68/e1dmsg.dll ||
-:skip_e1d68
-iseq ${pciid} 1af41000 && goto use_virtio ||
-goto skip_virtio
-:use_virtio
+:skip_e1d68-3
+iseq ${pciid} 1af41000-3 && goto use_virtio-3 ||
+goto skip_virtio-3
+:use_virtio-3
 # without extra name wimboot crashes (in pcbios mode)
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.cat   balloon.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.inf   balloon.inf ||
@@ -230,11 +231,11 @@ initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/head
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/amd64/vioser.cat  vioser.cat ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/amd64/vioser.inf  vioser.inf ||
 initrd     https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/vioserial/w10/amd64/vioser.sys  vioser.sys ||
-goto skip_virtio
-:skip_virtio
-iseq ${pciid} 8086100e && goto use_vbox ||
-goto skip_vbox
-:use_vbox
+goto skip_virtio-3
+:skip_virtio-3
+iseq ${pciid} 8086100e-3 && goto use_vbox-3 ||
+goto skip_vbox-3
+:use_vbox-3
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.inf VBoxGuest.inf
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.cat VBoxGuest.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/VBoxGuest.sys VBoxGuest.sys
@@ -254,12 +255,13 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxguest.cat vboxguest.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxmouse.cat vboxmouse.cat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
-goto skip_vbox
-:skip_vbox
+goto skip_vbox-3
+:skip_vbox-3
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7-zip,1.dll 7-zip.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,1.dll 7z.dll
-initrd https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/7zip/7z,1.exe 7z.exe
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip.dll 7-zip.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86_64.exe setup-x86_64.exe
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu

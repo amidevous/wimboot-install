@@ -135,7 +135,7 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/vbox/vboxwddm.cat vboxwddm.cat
 goto skip_vbox-2
 :skip_vbox-2
-initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/starter/french/legacy/autounattend.xml autounattend.xml
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/efi/autounattend.xml autounattend.xml
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip.dll 7-zip.dll
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7-zip32.dll 7-zip32.dll
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll

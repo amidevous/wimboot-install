@@ -63,7 +63,6 @@ wpeutil WaitForNetwork
 rem pause
 echo select disk 0 > config.txt
 echo clean >> config.txt
-echo Clean >> config.txt
 echo Convert GPT >> config.txt
 echo create partition primary Size=5120 >> config.txt
 echo Format Fs=FAT32 Quick Label="WinPE" >> config.txt
@@ -83,7 +82,10 @@ echo set id=27 >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
 pause
+pause
 diskpart /s config.txt
+pause
+pause
 pause
 ping -n 1 google.fr
 rem pause

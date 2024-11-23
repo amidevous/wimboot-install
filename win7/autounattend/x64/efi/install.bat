@@ -50,19 +50,24 @@ for /f "delims=" %%a in ('ipconfig /all') do (
         )
     )
 )
-pause
+rem pause
 net start dnscache
-pause
+rem pause
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
-pause
+rem pause
 netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
 rem pause
 rem ipconfig /flushdns﻿
-pause
+rem pause
 wpeutil WaitForNetwork
-pause
+rem pause
 echo select disk 0 > config.txt
 echo clean >> config.txt
+echo Clean >> config.txt
+echo Convert GPT >> config.txt
+echo create partition primary Size=5120 >> config.txt
+echo Format Fs=FAT32 Quick Label="WinPE" >> config.txt
+echo Assign Letter=A >> config.txt
 echo create partition primary size=20000 >> config.txt
 echo FORMAT QUICK FS=NTFS LABEL="System Reserved" >> config.txt
 echo assign letter="S" >> config.txt
@@ -81,13 +86,13 @@ pause
 diskpart /s config.txt
 pause
 ping -n 1 google.fr
-pause
+rem pause
 setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-pause
+rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
-pause
+rem pause
 7z x -y s:\win7minx86_64.iso -os:\
-pause
+rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install3.swm -O s:\sources\install3.swm
@@ -98,11 +103,11 @@ S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/dow
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O s:\sources\install8.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O s:\sources\install10.swm
-pause
+rem pause
 s:\sources\setup.exe /noreboot
-pause
+rem pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
-pause
+rem pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.cat -O x:\Windows\System32\balloon.cat
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.inf -O x:\Windows\System32\balloon.inf

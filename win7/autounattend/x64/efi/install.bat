@@ -66,13 +66,13 @@ echo clean >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "clean"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo Convert GPT >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "Convert GPT"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo CREATE PARTITION PRIMARY SIZE=300 >> config.txt
 echo format quick fs=ntfs label="Windows RE tools" >> config.txt
@@ -82,7 +82,7 @@ gpt attributes=0x8000000000000001 >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "Windows RE tools"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo create partition efi size=100 >> config.txt
 format quick fs=fat32 label="System" >> config.txt
@@ -91,7 +91,7 @@ echo set id=2 >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "System partition (ESP/EFI)"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo CREATE PARTITION MSR LABEL="MSR" SIZE=128 >> config.txt
 echo Assign Letter=D >> config.txt
@@ -99,7 +99,7 @@ echo set id=3 >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "Microsoft reserved partition (MSR)"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo create partition PRIMARY size=20000 >> config.txt
 echo FORMAT QUICK FS=NTFS LABEL="System" >> config.txt
@@ -109,7 +109,7 @@ echo active >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "drive S"
-pause
+rem pause
 echo select disk 0 > config.txt
 echo create partition primary >> config.txt
 echo shrink minimum=20000 >> config.txt
@@ -122,22 +122,22 @@ echo active >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "drive C"
-pause
+rem pause
 echo list volume >> config.txt
 echo exit >> config.txt
-pause
+rem pause
 diskpart /s config.txt
-pause
-pause
-pause
+rem pause
+rem pause
+rem pause
 ping -n 1 google.fr
-pause
+rem pause
 setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-pause
+rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
 pause
 7z x -y s:\win7minx86_64.iso -os:\
-pause
+rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install3.swm -O s:\sources\install3.swm
@@ -148,11 +148,11 @@ S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/dow
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O s:\sources\install8.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O s:\sources\install10.swm
-pause
+rem pause
 s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
-pause
+rem pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
-pause
+rem pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.cat -O x:\Windows\System32\balloon.cat
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.inf -O x:\Windows\System32\balloon.inf

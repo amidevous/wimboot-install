@@ -34,10 +34,10 @@ chain ${giturl}/raw/${commit}/install.ipxe
 
 :item2
 set conn_type https
-kernel https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/wimboot gui quiet || shell
-initrd ${giturl}/releases/download/${winversion}/bcd bcd
-initrd ${giturl}/releases/download/${winversion}/boot.sdi boot.sdi
-initrd ${giturl}/raw/${commit}/${winver}/autounattend/${arch1}/legacy/manual.bat install.bat
+kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot gui quiet || shell
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
+initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x86/legacy/manual.bat install.bat
 initrd ${giturl}/raw/${commit}/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winpe.jpg || echo no background - ignored
 initrd --name winre.jpg ${giturl}/raw/${commit}/win10/winpe.jpg winre.jpg || echo no background - ignored

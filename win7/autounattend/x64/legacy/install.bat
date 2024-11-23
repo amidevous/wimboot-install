@@ -50,17 +50,17 @@ for /f "delims=" %%a in ('ipconfig /all') do (
         )
     )
 )
-X:\Windows\system32\timeout.exe /t 60
+pause
 net start dnscache
-X:\Windows\system32\timeout.exe /t 60
+pause
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
-X:\Windows\system32\timeout.exe /t 60
+pause
 netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
-X:\Windows\system32\timeout.exe /t 60
+pause
 ipconfig /flushdns﻿
 pause
 wpeutil WaitForNetwork
-timeout /t 60
+pause
 echo select disk 0 > config.txt
 echo clean >> config.txt
 echo create partition primary size=20000 >> config.txt
@@ -77,17 +77,17 @@ echo assign letter="R" >> config.txt
 echo set id=27 >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
-timeout /t 60
+pause
 diskpart /s config.txt
-timeout /t 60
+pause
 ping -n 1 google.fr
-timeout /t 60
+pause
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-timeout /t 60
+pause
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%isoversionmin%min%arch1%.iso -O s:\%isoversionmin%min%arch1%.iso
-timeout /t 60
+pause
 7z x -y s:\%isoversionmin%min%arch1%.iso -os:\
-timeout /t 60
+pause
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install3.swm -O s:\sources\install3.swm

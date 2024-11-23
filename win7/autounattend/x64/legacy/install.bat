@@ -50,15 +50,15 @@ for /f "delims=" %%a in ('ipconfig /all') do (
         )
     )
 )
-timeout /t 60
+X:\Windows\system32\timeout.exe /t 60
 net start dnscache
-timeout /t 60
+X:\Windows\system32\timeout.exe /t 60
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary
-timeout /t 60
+X:\Windows\system32\timeout.exe /t 60
 netsh interface ipv4 set winsservers name="Ethernet" static 8.8.8.8
-timeout /t 60
+X:\Windows\system32\timeout.exe /t 60
 ipconfig /flushdns﻿
-timeout /t 60
+pause
 wpeutil WaitForNetwork
 timeout /t 60
 echo select disk 0 > config.txt

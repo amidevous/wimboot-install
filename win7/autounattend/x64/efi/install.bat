@@ -134,9 +134,9 @@ ping -n 1 google.fr
 pause
 setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 pause
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10minx86_64.iso -O s:\win10minx86_64.iso
+S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
 pause
-7z x -y s:\win10minx86_64.iso -os:\
+7z x -y s:\win7minx86_64.iso -os:\
 pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install2.swm -O s:\sources\install2.swm

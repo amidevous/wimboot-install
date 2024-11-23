@@ -2,7 +2,8 @@
 set menu-timeout 30000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
-isset ${menu-default} || set menu-default item3
+isset ${menu-default}
+set menu-default item3
 set nloc ${netX/busloc}
 set pciid ${pci/${nloc}.0.2}${pci/${nloc}.2.2}
 set submenu-timeout ${menu-timeout}

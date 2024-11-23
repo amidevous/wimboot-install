@@ -73,9 +73,12 @@ echo list volume >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 ping -n 1 google.fr
+timeout /t 60
 setup-%arch1%.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/%isoversionmin%min%arch1%.iso -O s:\%isoversionmin%min%arch1%.iso
+timeout /t 60
 7z x -y s:\%isoversionmin%min%arch1%.iso -os:\
+timeout /t 60
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install3.swm -O s:\sources\install3.swm
@@ -86,6 +89,7 @@ S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install7.swm -O s
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install8.swm -O s:\sources\install8.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe %giturl%/releases/download/%winversion%/install10.swm -O s:\sources\install10.swm
+timeout /t 60
 s:\sources\setup.exe /noreboot
 if %gitbcommit%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf

@@ -82,7 +82,8 @@ diskpart /s config.txt
 echo "EFI"
 pause
 echo select disk 0 > config.txt
-echo CREATE PARTITION MSR SIZE=16 >> config.txt
+rem echo CREATE PARTITION MSR SIZE=16 >> config.txt
+echo CREATE PARTITION ESP SIZE=16 >> config.txt
 echo Assign Letter=B >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt

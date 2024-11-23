@@ -19,9 +19,11 @@ item exit              	Exit
 choose --timeout ${menu-timeout} --default ${menu-default} target && goto ${target}
 
 :item1
+set conn_type https
 chain http://${server_ip}/win7/x86/ipxe/menu.ipxe
 
 :item2
+set conn_type https
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
@@ -51,6 +53,7 @@ initrd http://${server_ip}/win10/french/sources/boot.wim boot.wim
 boot || goto menu
 
 :item3
+set conn_type https
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
@@ -81,6 +84,7 @@ boot || goto menu
 
 
 :item4
+set conn_type https
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
@@ -110,6 +114,7 @@ boot || goto menu
 
 
 :item5
+set conn_type https
 kernel https://github.com/ipxe/wimboot/releases/latest/download/wimboot.i386
 initrd http://${server_ip}/win10/french/boot/bcd bcd
 initrd http://${server_ip}/win10/french/boot/boot.sdi boot.sdi
@@ -140,6 +145,7 @@ boot || goto menu
 
 
 :item6
+set conn_type https
 ifopen net0
 #set net0/ip 10.0.0.3
 #set net0/netmask 255.255.255.0

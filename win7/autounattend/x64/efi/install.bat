@@ -83,6 +83,14 @@ echo Assign Letter=D >> config.txt
 echo set id=3 >> config.txt
 echo active >> config.txt
 
+
+echo create partition primary size=20000 >> config.txt
+echo FORMAT QUICK FS=NTFS LABEL="System Reserved" >> config.txt
+echo assign letter="S" >> config.txt
+echo set id=5 >> config.txt
+echo active >> config.txt
+
+
 echo create partition primary >> config.txt
 echo shrink minimum=1000 >> config.txt
 echo format quick fs=ntfs label="OS" >> config.txt
@@ -90,11 +98,6 @@ echo assign letter="C" >> config.txt
 echo set id=4 >> config.txt
 echo active >> config.txt
 
-echo create partition primary size=20000 >> config.txt
-echo FORMAT QUICK FS=NTFS LABEL="System Reserved" >> config.txt
-echo assign letter="S" >> config.txt
-echo set id=5 >> config.txt
-echo active >> config.txt
 rem echo create partition primary >> config.txt
 rem echo format quick fs=ntfs label="Recovery" >> config.txt
 rem echo assign letter="R" >> config.txt

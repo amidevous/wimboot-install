@@ -108,13 +108,13 @@ pause
 pause
 pause
 ping -n 1 google.fr
-rem pause
+pause
 setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-rem pause
+pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
-rem pause
+pause
 7z x -y s:\win7minx86_64.iso -os:\
-rem pause
+pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install2.swm -O s:\sources\install2.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install3.swm -O s:\sources\install3.swm
@@ -125,11 +125,11 @@ S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/dow
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O s:\sources\install8.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O s:\sources\install9.swm
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O s:\sources\install10.swm
-rem pause
+pause
 s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
-rem pause
+pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
-rem pause
+pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.cat -O x:\Windows\System32\balloon.cat
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.inf -O x:\Windows\System32\balloon.inf

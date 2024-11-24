@@ -27,7 +27,7 @@ echo
 echo Please download the latest version from netboot.xyz.
 echo
 echo Attempting to chain to latest version...
-chain --autofree http://${boot_domain}/ipxe/${ipxe_disk} ||
+chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz-snponly.efi ||
 :version_up2date
 
 isset ${menu} && goto ${menu} ||

@@ -262,8 +262,6 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86_64.exe setup-x86_64.exe
-initrd https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/cdd54ba4-7db9-49b3-bbf9-48fe676bf8fd/MicrosoftEdgeWebView2RuntimeInstallerX64.exe MicrosoftEdgeWebView2RuntimeInstallerX64.exe
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/DriversCloudx64_12_0_26.7z DriversCloudx64_12_0_26.7z
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 

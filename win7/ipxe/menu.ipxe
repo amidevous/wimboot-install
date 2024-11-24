@@ -1,5 +1,5 @@
 #!ipxe
-set menu-timeout 30000
+set menu-timeout 10000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
 isset ${menu-default}
@@ -156,7 +156,7 @@ boot || goto menu
 
 :item3
 set conn_type https
-kernel https://github.com/amidevous/wimboot-install/releases/download/windows7/wimboot gui quiet || shell
+kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot gui quiet || shell
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
 initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/efi/install.bat install.bat

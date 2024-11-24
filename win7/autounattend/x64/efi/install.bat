@@ -51,9 +51,12 @@ for /f "delims=" %%a in ('ipconfig /all') do (
     )
 )
 rem pause
-rem setup-x86_64.exe --quiet-mode --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates,curl
+setup-x86_64.exe --quiet-mode --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates,curl
 rem x:\Cygwin\bin\curl.exe https://archive.mozilla.org/pub/firefox/releases/91.9.1esr/win64/fr/Firefox%20Setup%2091.9.1esr.exe -o "x:\Windows\System32\Firefox-Setup-91.9.1esr.exe"
-"x:\Windows\System32\Firefox Setup 52.0.1esr.exe" /S
+"x:\Windows\System32\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+msiexec /i "x:\Windows\System32\DriversCloudx64_12_0_26.msi"
+pause"
+rem "x:\Windows\System32\Firefox Setup 52.0.1esr.exe" /S
 "C:\Program Files\Mozilla Firefox\firefox.exe" https://www.driverscloud.com/fr/mes-pilotes
 cmd
 echo "cmd"

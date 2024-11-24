@@ -51,7 +51,7 @@ for /f "delims=" %%a in ('ipconfig /all') do (
     )
 )
 rem pause
-"Firefox Setup 132.0.2.exe" /S
+"Firefox Setup 128.4.0esr.exe" /S
 "C:\Program Files\Mozilla Firefox\firefox.exe" https://www.driverscloud.com/fr/mes-pilotes
 pause
 echo "pause"

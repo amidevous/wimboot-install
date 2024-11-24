@@ -135,7 +135,8 @@ rem pause
 rem pause
 ping -n 1 google.fr
 rem pause
-setup-x86_64.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
+rem  --quiet-mode
+setup-x86_64.exe --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 pause
 echo "mkdir X:\windowssource"
 mkdir X:\windowssource
@@ -145,6 +146,7 @@ X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/dow
 pause
 cd X:\windowssource\
 7z x -y X:\windowssource\win7minx86_64.iso
+del win7minx86_64.iso
 pause
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_64.swm -O X:\windowssource\sources\install.swm
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_642.swm -O X:\windowssource\sources\install2.swm

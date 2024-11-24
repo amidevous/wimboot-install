@@ -6,7 +6,7 @@ set keymap fr
 set menu-timeout 1000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
-isset ${menu-default} || set menu-default item2
+isset ${menu-default} || set menu-default item4
 
 menu
 item --gap --           -----------------------------------------
@@ -33,10 +33,7 @@ set conn_type https
 chain https://raw.githubusercontent.com/amidevous/wimboot-install/main/win10/ipxe/menu.ipxe
 
 :item4
-set conn_type https
-chain --autofree https://boot.netboot.xyz/ || echo HTTPS failed... attempting HTTP...
-set conn_type http
-chain --autofree http://boot.netboot.xyz/ || echo HTTP failed, localbooting...
+chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot.ipxe
 goto menu
 
 

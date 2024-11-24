@@ -157,8 +157,8 @@ boot || goto menu
 :item3
 set conn_type https
 kernel https://github.com/amidevous/wimboot-install/releases/download/windows10/wimboot gui quiet || shell
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/bcd bcd
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.sdi boot.sdi
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/bcd bcd
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.sdi boot.sdi
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/efi/install.bat install.bat
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/winpeshl.ini winpeshl.ini
 initrd --name winpe.jpg https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/winpe.jpg || echo no background - ignored
@@ -262,7 +262,7 @@ initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/ma
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.dll 7z.dll
 initrd https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win7/autounattend/x64/legacy/7z.exe 7z.exe
 initrd https://www.cygwin.com/setup-x86_64.exe setup-x86_64.exe
-initrd https://github.com/amidevous/wimboot-install/releases/download/windows7/boot.wim boot.wim
+initrd https://github.com/amidevous/wimboot-install/releases/download/windows10/boot.wim boot.wim
 boot || goto menu
 
 :item4

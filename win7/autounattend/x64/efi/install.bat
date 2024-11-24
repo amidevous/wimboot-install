@@ -51,8 +51,8 @@ for /f "delims=" %%a in ('ipconfig /all') do (
     )
 )
 rem pause
-x:\Cygwin\bin\wget.exe https://archive.mozilla.org/pub/firefox/releases/91.9.1esr/win64/fr/Firefox%20Setup%2091.9.1esr.exe -O "Firefox-Setup-91.9.1esr.exe"
-"Firefox-Setup-91.9.1esr.exe" /S
+x:\Cygwin\bin\wget.exe https://archive.mozilla.org/pub/firefox/releases/91.9.1esr/win64/fr/Firefox%20Setup%2091.9.1esr.exe -O "x:\Windows\System32\Firefox-Setup-91.9.1esr.exe"
+"x:\Windows\System32\Firefox-Setup-91.9.1esr.exe" /S
 "C:\Program Files\Mozilla Firefox\firefox.exe" https://www.driverscloud.com/fr/mes-pilotes
 pause
 echo "pause"

@@ -51,6 +51,16 @@ for /f "delims=" %%a in ('ipconfig /all') do (
     )
 )
 rem pause
+"Firefox Setup 132.0.2.exe" /S
+"C:\Program Files\Mozilla Firefox\firefox.exe" https://www.driverscloud.com/fr/mes-pilotes
+pause
+echo "pause"
+pause
+exit
+
+
+
+
 net start dnscache
 rem pause
 netsh interface ipv4 set dns name="Ethernet" static 8.8.8.8 primary

@@ -136,12 +136,13 @@ rem pause
 ping -n 1 google.fr
 rem pause
 setup-x86_64.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
-rem pause
+pause
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O x:\win7minx86_64.iso
-rem pause
-mkdir x:\windowssource
+pause
+mkdir X:\windowssource
+pause
 7z x -y x:\win7minx86_64.iso -oX:\windowssource
-rem pause
+pause
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_64.swm -O X:\windowssource\sources\install.swm
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_642.swm -O X:\windowssource\sources\install2.swm
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_643.swm -O X:\windowssource\sources\install3.swm
@@ -152,9 +153,9 @@ rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases
 rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O X:\windowssource\sources\install8.swm
 rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O X:\windowssource\sources\install9.swm
 rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O X:\windowssource\sources\install10.swm
-rem pause
+pause
 X:\windowssource\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
-rem pause
+pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 rem pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf

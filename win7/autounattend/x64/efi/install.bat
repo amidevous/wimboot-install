@@ -51,7 +51,7 @@ for /f "delims=" %%a in ('ipconfig /all') do (
     )
 )
 rem pause
-setup-x86_64.exe --quiet-mode --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates,curl
+setup-x86_64.exe --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates,curl
 rem x:\Cygwin\bin\curl.exe https://archive.mozilla.org/pub/firefox/releases/91.9.1esr/win64/fr/Firefox%20Setup%2091.9.1esr.exe -o "x:\Windows\System32\Firefox-Setup-91.9.1esr.exe"
 x:\Cygwin\bin\curl.exe https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/cdd54ba4-7db9-49b3-bbf9-48fe676bf8fd/MicrosoftEdgeWebView2RuntimeInstallerX64.exe -o "x:\Windows\System32\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 "x:\Windows\System32\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"

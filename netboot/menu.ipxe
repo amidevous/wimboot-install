@@ -7,7 +7,7 @@ iseq ${buildarch} arm64 && set arch arm64 ||
 :skip_arch_detect
 chain --autofree boot.cfg ||
 echo Attempting to retrieve latest upstream version number...
-chain --timeout 5000 https://boot.netboot.xyz/version.ipxe ||
+chain --timeout 5000 https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/version.ipxe ||
 ntp 0.pool.ntp.org ||
 iseq ${cls} serial && goto ignore_cls ||
 set cls:hex 1b:5b:4a  # ANSI clear screen sequence - "^[[J"

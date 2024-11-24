@@ -136,7 +136,7 @@ rem pause
 ping -n 1 google.fr
 rem pause
 rem  --quiet-mode
-setup-x86_64.exe --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
+rem setup-x86_64.exe --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 pause
 echo "mkdir X:\windowssource"
 mkdir X:\windowssource

@@ -117,12 +117,15 @@ echo format quick fs=ntfs label="OS" >> config.txt
 echo assign letter="C" >> config.txt
 rem set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
 echo set id="4" >> config.txt
-echo gpt attributes=0x8000000000000001 >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
 diskpart /s config.txt
 echo "drive C"
 rem pause
+echo create partition primary >> config.txt
+echo gpt attributes=0x8000000000000001 >> config.txt
+echo assign letter="R" >> config.txt
+echo set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
 rem pause
@@ -135,7 +138,7 @@ rem pause
 setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
-pause
+rem pause
 7z x -y s:\win7minx86_64.iso -os:\
 rem pause
 S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm

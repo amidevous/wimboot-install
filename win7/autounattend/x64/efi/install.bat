@@ -80,7 +80,7 @@ echo Assign Letter=A >> config.txt
 set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
 gpt attributes=0x8000000000000001 >> config.txt
 echo exit >> config.txt
-diskpart /s config.txt
+rem diskpart /s config.txt
 echo "Windows RE tools"
 rem pause
 echo select disk 0 > config.txt
@@ -89,7 +89,7 @@ format quick fs=fat32 label="System" >> config.txt
 echo Assign Letter=B >> config.txt
 echo set id=2 >> config.txt
 echo exit >> config.txt
-diskpart /s config.txt
+rem diskpart /s config.txt
 echo "System partition (ESP/EFI)"
 rem pause
 echo select disk 0 > config.txt
@@ -97,7 +97,7 @@ echo CREATE PARTITION MSR LABEL="MSR" SIZE=128 >> config.txt
 echo Assign Letter=D >> config.txt
 echo set id=3 >> config.txt
 echo exit >> config.txt
-diskpart /s config.txt
+rem diskpart /s config.txt
 echo "Microsoft reserved partition (MSR)"
 rem pause
 echo select disk 0 > config.txt
@@ -107,7 +107,7 @@ echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
-diskpart /s config.txt
+rem diskpart /s config.txt
 echo "drive S"
 rem pause
 echo select disk 0 > config.txt
@@ -119,7 +119,7 @@ rem set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
 echo set id="4" >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
-diskpart /s config.txt
+rem diskpart /s config.txt
 echo "drive C"
 rem pause
 echo create partition primary >> config.txt
@@ -129,30 +129,31 @@ echo set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
 rem pause
-diskpart /s config.txt
+rem diskpart /s config.txt
 rem pause
 rem pause
 rem pause
 ping -n 1 google.fr
 rem pause
-setup-x86_64.exe --no-admin --root S:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l S:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
+setup-x86_64.exe --no-admin --root X:\Cygwin\ --quiet-mode --no-shortcuts --no-startmenu --allow-unsupported-windows --arch %arch1% --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 rem pause
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O s:\win7minx86_64.iso
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O x:\win7minx86_64.iso
 rem pause
-7z x -y s:\win7minx86_64.iso -os:\
+mkdir x:\windowssource
+7z x -y x:\win7minx86_64.iso -oX:\windowssource
 rem pause
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install.swm -O s:\sources\install.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install2.swm -O s:\sources\install2.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install3.swm -O s:\sources\install3.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install4.swm -O s:\sources\install4.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install5.swm -O s:\sources\install5.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install6.swm -O s:\sources\install6.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install7.swm -O s:\sources\install7.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O s:\sources\install8.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O s:\sources\install9.swm
-S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O s:\sources\install10.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_64.swm -O X:\windowssource\sources\install.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_642.swm -O X:\windowssource\sources\install2.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_643.swm -O X:\windowssource\sources\install3.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_644.swm -O X:\windowssource\sources\install4.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_645.swm -O X:\windowssource\sources\install5.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install6.swm -O X:\windowssource\sources\install6.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install7.swm -O X:\windowssource\sources\install7.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O X:\windowssource\sources\install8.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O X:\windowssource\sources\install9.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O X:\windowssource\sources\install10.swm
 rem pause
-s:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
+X:\windowssource\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 rem pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 rem pause

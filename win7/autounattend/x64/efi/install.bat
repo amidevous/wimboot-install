@@ -2,9 +2,9 @@
 wpeinit
 set giturl=https://github.com/amidevous/wimboot-install
 set gitbcommit=main
-set winversion=windows7
-set winversionmin=w7
-set isoversionmin=win7
+set winversion=windows10
+set winversionmin=w10
+set isoversionmin=win10
 set arch1=x86_64
 set arch2=x86_64
 set cygmirror=https://mirrors.kernel.org/sourceware/cygwin/
@@ -141,27 +141,27 @@ echo "mkdir X:\windowssource"
 mkdir X:\windowssource
 pause
 echo "wget iso"
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7minx86_64.iso -O X:\windowssource\win7minx86_64.iso
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10minx86_64.iso -O X:\windowssource\win10minx86_64.iso
 pause
 cd X:\windowssource\
-7z x -y X:\windowssource\win7minx86_64.iso
-del win7minx86_64.iso
+7z x -y X:\windowssource\win10minx86_64.iso
+del X:\windowssource\win10minx86_64.iso
 pause
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_64.swm -O X:\windowssource\sources\install.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_642.swm -O X:\windowssource\sources\install2.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_643.swm -O X:\windowssource\sources\install3.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_644.swm -O X:\windowssource\sources\install4.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/win7pro-x86_645.swm -O X:\windowssource\sources\install5.swm
-rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install6.swm -O X:\windowssource\sources\install6.swm
-rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install7.swm -O X:\windowssource\sources\install7.swm
-rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install8.swm -O X:\windowssource\sources\install8.swm
-rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install9.swm -O X:\windowssource\sources\install9.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64.swm -O X:\windowssource\sources\install.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-2.swm -O X:\windowssource\sources\install2.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-3.swm -O X:\windowssource\sources\install3.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-4.swm -O X:\windowssource\sources\install4.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-5.swm -O X:\windowssource\sources\install5.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-6.swm -O X:\windowssource\sources\install6.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-7.swm -O X:\windowssource\sources\install7.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-8.swm -O X:\windowssource\sources\install8.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-9.swm -O X:\windowssource\sources\install9.swm
 rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O X:\windowssource\sources\install10.swm
 pause
 X:\windowssource\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
-rem pause
+pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.cat -O x:\Windows\System32\balloon.cat
 if exist x:\Windows\System32\balloon.inf wget https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/win10/drv/virtio-win-0.1.240/Balloon/w10/amd64/balloon.inf -O x:\Windows\System32\balloon.inf

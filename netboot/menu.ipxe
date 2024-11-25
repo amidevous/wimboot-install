@@ -27,7 +27,7 @@ echo
 echo Please download the latest version from netboot.xyz.
 echo
 echo Attempting to chain to latest version...
-chain --autofree http://${boot_domain}/ipxe/${ipxe_disk} ||
+chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot.ipxe ||
 :version_up2date
 
 isset ${menu} && goto ${menu} ||

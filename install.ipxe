@@ -6,7 +6,8 @@ set keymap fr
 set menu-timeout 1000
 #set menu-timeout 1
 set submenu-timeout ${menu-timeout}
-isset ${menu-default} || set menu-default item4
+isset ${menu-default}
+set menu-default item2
 
 menu
 item --gap --           -----------------------------------------

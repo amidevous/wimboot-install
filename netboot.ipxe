@@ -44,8 +44,6 @@ item shell ${space} iPXE shell
 item netinfo ${space} Network card info
 iseq ${menu_pci} 1 && item lspci ${space} PCI Device List ||
 item about ${space} About netboot.xyz
-item --gap Signature Checks:
-item sig_check ${space} netboot.xyz [ enabled: ${sigs_enabled} ]
 isset ${github_user} && item --gap Custom Github Menu: ||
 isset ${github_user} && item custom-github ${space} ${github_user}'s Custom Menu ||
 isset ${custom_url} && item --gap Custom URL Menu: ||
@@ -53,15 +51,10 @@ isset ${custom_url} && item custom-url ${space} Custom URL Menu ||
 isset ${menu} && set timeout 0 || set timeout ${boot_timeout}
 choose --timeout ${timeout} --default ${menu} menu || goto local
 echo ${cls}
-goto ${menu} ||
-iseq ${sigs_enabled} true && goto verify_sigs || goto change_menu
-
-:verify_sigs
-imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
-goto change_menu
+goto ${menu} || goto change_menu
 
 :change_menu
-chain ${menu}.ipxe || goto error
+chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/${menu}.ipxe || goto error
 goto main_menu
 
 :error
@@ -82,10 +75,6 @@ goto main_menu
 :change_arch
 iseq ${arch} x86_64 && set arch i386 && set menu_linux_i386 1 && set menu_linux 0 && goto main_menu ||
 iseq ${arch} i386 && set arch x86_64 && set menu_linux_i386 0 && set menu_linux 1 && goto main_menu ||
-goto main_menu
-
-:sig_check
-iseq ${sigs_enabled} true && set sigs_enabled false || set sigs_enabled true
 goto main_menu
 
 :about

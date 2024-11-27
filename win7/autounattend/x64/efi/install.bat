@@ -100,7 +100,7 @@ rem diskpart /s config.txt
 echo "Microsoft reserved partition (MSR)"
 rem pause
 echo select disk 0 > config.txt
-echo create partition PRIMARY size=200000 >> config.txt
+echo create partition PRIMARY size=20000 >> config.txt
 echo FORMAT QUICK FS=NTFS LABEL="install" >> config.txt
 echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt
@@ -137,14 +137,11 @@ rem pause
 rem  --quiet-mode
 rem setup-x86_64.exe --no-admin --root X:\Cygwin\ --no-shortcuts --no-startmenu --allow-unsupported-windows --arch x86_64 --force-current --no-desktop --no-replaceonreboot --no-verify --no-version-check --no-warn-deprecated-windows --no-write-registry --only-site --site %cygmirror% -l x:\Cygwin\var\cache\apt\packages --packages dos2unix,wget,ca-certificates
 pause
-echo "mkdir X:\windowssource"
-mkdir X:\windowssource
-pause
 echo "wget iso"
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10minx86_64.iso -O S:\win10minx86_64.iso
 pause
 cd S:\
-7z x -y S:\win10minx86_64.iso
+7z x -y S:\win10minx86_64.iso -oS:\
 del S:\win10minx86_64.iso
 pause
 X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64.swm -O S:\sources\install.swm

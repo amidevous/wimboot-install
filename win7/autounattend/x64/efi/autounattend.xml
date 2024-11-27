@@ -22,6 +22,7 @@ Notes: Enter your comments here...
 <UserLocale>fr-FR</UserLocale>
 </component>
 <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--*************************************************
 <DiskConfiguration>
 <Disk wcm:action="add">
 <DiskID>0</DiskID>
@@ -84,13 +85,14 @@ Notes: Enter your comments here...
 </ModifyPartitions>
 </Disk>
 </DiskConfiguration>
+**************************************************-->
 <ImageInstall>
 <OSImage>
 <InstallTo>
 <DiskID>0</DiskID>
 <PartitionID>4</PartitionID>
 </InstallTo>
-<InstallToAvailablePartition>false</InstallToAvailablePartition>
+<InstallToAvailablePartition>true</InstallToAvailablePartition>
 </OSImage>
 </ImageInstall>
 <UserData>
@@ -132,7 +134,6 @@ Notes: Enter your comments here...
 </component>
 <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <ComputerName>PC</ComputerName>
-<ProductKey>FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4</ProductKey>
 </component>
 </settings>
 <settings pass="oobeSystem">

@@ -100,8 +100,7 @@ rem diskpart /s config.txt
 echo "Microsoft reserved partition (MSR)"
 rem pause
 echo select disk 0 > config.txt
-echo create partition PRIMARY size=20000 >> config.txt
-echo shrink minimum=20000 >> config.txt
+echo create partition PRIMARY size=200000 >> config.txt
 echo FORMAT QUICK FS=NTFS LABEL="install" >> config.txt
 echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt

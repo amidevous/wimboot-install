@@ -106,7 +106,7 @@ echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
-rem diskpart /s config.txt
+diskpart /s config.txt
 echo "drive S"
 rem pause
 echo select disk 0 > config.txt
@@ -141,24 +141,24 @@ echo "mkdir X:\windowssource"
 mkdir X:\windowssource
 pause
 echo "wget iso"
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10minx86_64.iso -O X:\windowssource\win10minx86_64.iso
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10minx86_64.iso -O S:\win10minx86_64.iso
 pause
-cd X:\windowssource\
-7z x -y X:\windowssource\win10minx86_64.iso
-del X:\windowssource\win10minx86_64.iso
+cd S:\
+7z x -y S:\win10minx86_64.iso
+del S:\win10minx86_64.iso
 pause
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64.swm -O X:\windowssource\sources\install.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-2.swm -O X:\windowssource\sources\install2.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-3.swm -O X:\windowssource\sources\install3.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-4.swm -O X:\windowssource\sources\install4.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-5.swm -O X:\windowssource\sources\install5.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-6.swm -O X:\windowssource\sources\install6.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-7.swm -O X:\windowssource\sources\install7.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-8.swm -O X:\windowssource\sources\install8.swm
-X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-9.swm -O X:\windowssource\sources\install9.swm
-rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O X:\windowssource\sources\install10.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64.swm -O S:\sources\install.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-2.swm -O S:\sources\install2.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-3.swm -O S:\sources\install3.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-4.swm -O S:\sources\install4.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-5.swm -O S:\sources\install5.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-6.swm -O S:\sources\install6.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-7.swm -O S:\sources\install7.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-8.swm -O S:\sources\install8.swm
+X:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows10/win10prox64-9.swm -O S:\sources\install9.swm
+rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases/download/windows7/install10.swm -O S:\sources\install10.swm
 pause
-X:\windowssource\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
+S:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 pause
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 pause

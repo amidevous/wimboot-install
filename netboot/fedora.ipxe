@@ -74,9 +74,6 @@ goto boottype
 imgfree
 kernel ${fedora_mirror}/${dir}/images/pxeboot/vmlinuz inst.repo=${fedora_mirror}/${dir} ${install_mode} ${params} ${ipparam} initrd=initrd.magic ${cmdline}
 initrd ${fedora_mirror}/${dir}/images/pxeboot/initrd.img
-echo
-echo MD5sums:
-md5sum vmlinuz initrd.img
 boot
 goto linux_menu
 

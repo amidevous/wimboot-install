@@ -63,9 +63,9 @@ goto boottype
 
 :bootos_images
 imgfree
-iseq ${osversion} 6 && set dir ${osversion}/${os_arch}/os ||
+iseq ${osversion} 6 && set dir centos-store/centos/${osversion}/${os_arch}/os ||
 iseq ${osversion} 6 && set repo ${centos_mirror}/${dir} ||
-iseq ${osversion} 7 && set dir ${osversion}/${os_arch}/os ||
+iseq ${osversion} 7 && set dir centos-store/centos/${osversion}/${os_arch}/os ||
 iseq ${osversion} 7 && set repo ${centos_mirror}/${dir} ||
 iseq ${osversion} 9-stream && set centos_mirror http://mirror.rackspace.com/centos-stream ||
 iseq ${osversion} 9-stream && set dir ${osversion}/BaseOS/${os_arch}/os ||

@@ -1,139 +1,105 @@
 #!ipxe
-set esc:hex 1b
-set bold ${esc:string}[1m
-set boldoff ${esc:string}[22m
-set fg_gre ${esc:string}[32m
-set fg_cya ${esc:string}[36m
-set fg_whi ${esc:string}[37m
-set VARS_ERR Local vars file not found... attempting TFTP boot...
-set TFTP_ERR Local TFTP failed... attempting remote HTTPS
-set V6_ERR IPv6 appears to have failed... attempting IPv4...
-set HTTPS_ERR HTTPS appears to have failed... attempting HTTP
-set HTTP_ERR HTTP has failed, localbooting...
-set site_name netboot.xyz
-set boot_domain boot.netboot.xyz
-set ipxe_version ${version}
-set version 2.x
-set conn_type https
 
 :start
-echo ${bold}${fg_gre}${site_name} - ${fg_whi}v${version}${boldoff}
-iseq ${site_name} netboot.xyz || echo ${bold}${fg_whi}Powered by ${fg_gre}netboot.xyz${fg_whi}${boldoff}
-prompt --key m --timeout 4000 Hit the ${bold}m${boldoff} key to open failsafe menu... && goto failsafe || goto dhcp
+isset ${arch} && goto skip_arch_detect ||
+cpuid --ext 29 && set arch x86_64 || set arch i386
+iseq ${buildarch} arm64 && set arch arm64 ||
+:skip_arch_detect
+chain --autofree boot.cfg ||
+echo Attempting to retrieve latest upstream version number...
+chain --timeout 5000 https://boot.netboot.xyz/version.ipxe ||
+ntp 0.pool.ntp.org ||
+iseq ${cls} serial && goto ignore_cls ||
+set cls:hex 1b:5b:4a  # ANSI clear screen sequence - "^[[J"
+set cls ${cls:string}
+:ignore_cls
 
-:dhcp
-echo
-dhcp || goto netconfig
-isset ${next-server} && isset ${proxydhcp/next-server} && goto choose-tftp || set tftp-server ${next-server} && goto load-custom-ipxe
+isset ${menu} && goto ${menu} ||
+isset ${ip} || dhcp
 
-:choose-tftp
-# Load "proxy settings" from root server
-chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo ${VARS_ERR}
-# Check if the proxy-dhcp-vars script has made any usable command about how to progress with a next-server and a proxy-next-server being set
-isset ${use_proxydhcp_settings} && iseq ${use_proxydhcp_settings} true && goto set-next-server ||
-prompt --key p --timeout 4000 DHCP proxy detected, press ${bold}p${boldoff} to boot from ${proxydhcp/next-server}... && set use_proxydhcp_settings true || set use_proxydhcp_settings false
-goto set-next-server
+:main_menu
+clear menu
+set space:hex 20:20
+set space ${space:string}
+isset ${next-server} && menu ${site_name} v${version} - next-server: ${next-server} || menu ${site_name}
+item --gap Default:
+item local ${space} Boot from local hdd
+item --gap Distributions:
+iseq ${menu_linux} 1 && item linux ${space} Linux Network Installs (64-bit) ||
+iseq ${menu_linux_i386} 1 && item linux-i386 ${space} Linux Network Installs (32-bit) ||
+iseq ${menu_linux_arm} 1 && item linux-arm ${space} Linux Network Installs (arm64) ||
+iseq ${menu_live} 1 && item live ${space} Live CDs ||
+iseq ${menu_live_arm} 1 && item live-arm ${space} Live CDs ||
+iseq ${menu_bsd} 1 && item bsd ${space} BSD Installs ||
+iseq ${menu_unix} 1 && item unix ${space} Unix Network Installs ||
+iseq ${menu_freedos} 1 && item freedos ${space} FreeDOS ||
+iseq ${menu_windows} 1 && item windows ${space} Windows ||
+item --gap Tools:
+iseq ${menu_utils} 1 && iseq ${platform} efi && item utils-efi ${space} Utilities (UEFI) ||
+iseq ${menu_utils} 1 && iseq ${platform} pcbios && iseq ${arch} x86_64 && item utils-pcbios-64 ${space} Utilities (64-bit) ||
+iseq ${menu_utils} 1 && iseq ${platform} pcbios && iseq ${arch} i386 && item utils-pcbios-32 ${space} Utilities (32-bit) ||
+iseq ${menu_utils_arm} 1 && item utils-arm ${space} Utilities (arm64) ||
+item change_arch ${space} Architecture: ${arch}
+item shell ${space} iPXE shell
+item netinfo ${space} Network card info
+iseq ${menu_pci} 1 && item lspci ${space} PCI Device List ||
+item about ${space} About netboot.xyz
+item --gap Signature Checks:
+item sig_check ${space} netboot.xyz [ enabled: ${sigs_enabled} ]
+isset ${github_user} && item --gap Custom Github Menu: ||
+isset ${github_user} && item custom-github ${space} ${github_user}'s Custom Menu ||
+isset ${custom_url} && item --gap Custom URL Menu: ||
+isset ${custom_url} && item custom-url ${space} Custom URL Menu ||
+isset ${menu} && set timeout 0 || set timeout ${boot_timeout}
+choose --timeout ${timeout} --default ${menu} menu || goto local
+echo ${cls}
+goto ${menu} ||
+iseq ${sigs_enabled} true && goto verify_sigs || goto change_menu
 
-:set-next-server
-iseq ${use_proxydhcp_settings} true && set tftp-server ${proxydhcp/next-server} || set tftp-server ${next-server}
-goto load-custom-ipxe
+:verify_sigs
+imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
+goto change_menu
 
-:load-custom-ipxe
-isset ${tftp-server} && iseq ${filename} netboot.xyz.kpxe && goto tftpmenu ||
-isset ${tftp-server} && iseq ${filename} netboot.xyz-undionly.kpxe && goto tftpmenu ||
-isset ${tftp-server} && iseq ${filename} netboot.xyz.efi && goto tftpmenu ||
-isset ${tftp-server} && iseq ${filename} netboot.xyz-snp.efi && goto tftpmenu ||
-isset ${tftp-server} && iseq ${filename} netboot.xyz-snponly.efi && goto tftpmenu ||
-isset ${tftp-server} && iseq ${filename} netboot.xyz-arm64.efi && goto tftpmenu ||
-goto menu
+:change_menu
+chain ${menu}.ipxe || goto error
+goto main_menu
 
-:failsafe
-menu ${boot_domain} Failsafe Menu
-item localboot Boot to local drive
-item netconfig Manual network configuration
-item vlan Manual VLAN configuration
-item retry Retry boot
-item debug iPXE Debug Shell
-item reboot Reboot System
-choose failsafe_choice || exit
-goto ${failsafe_choice}
+:error
+echo Error occurred, press any key to return to menu ...
+prompt
+goto main_menu
 
-:netconfig
-echo Network Configuration:
-echo Available interfaces...
-ifstat
-imgfree
-echo -n Set network interface number [0 for net0, defaults to 0]: ${} && read net
-isset ${net} || set net 0
-echo -n IP: && read net${net}/ip
-echo -n Subnet mask: && read net${net}/netmask
-echo -n Gateway: && read net${net}/gateway
-echo -n DNS: && read dns
-ifopen net${net}
-echo Attempting chainload of ${boot_domain}...
-goto menu || goto failsafe
+:local
+echo Booting from local disks ...
+exit 1
 
-:vlan
-echo VLAN Configuration:
-echo Available interfaces...
-ifstat
-imgfree
-echo -n Set network interface number [0 for net0, defaults to 0]: ${} && read net
-isset ${net} || set net 0
-echo -n Set VLAN 802.1Q tag [0 to 4094]: ${} && read vlan
-vcreate --tag ${vlan} net${net}
-ifconf --configurator dhcp net${net}-${vlan} || echo DHCP failed trying manual && goto netvlan
-echo Attempting chainload of ${boot_domain}...
-goto menu || goto failsafe
-
-:netvlan
-echo -n IP: && read net${net}-${vlan}/ip
-echo -n Subnet mask: && read net${net}-${vlan}/netmask
-echo -n Gateway: && read net${net}-${vlan}/gateway
-echo -n DNS: && read dns
-ifopen net${net}-${vlan}
-echo Attempting chainload of ${boot_domain}...
-goto menu || goto failsafe
-
-:tftpmenu
-chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo ${VARS_ERR}
-isset ${hostname} && chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo Custom boot by Hostname not found trying MAC...
-chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo Custom boot by MAC not found booting default...
-chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo ${TFTP_ERR} && goto menu
-
-:menu
-:menu_https
-set conn_type https
-goto menu_start
-
-:menu_http
-set conn_type http
-goto menu_start
-
-:menu_start
-isset ${netX/dns6} && goto menu_v6 || goto menu_v4
-:menu_v6
-isset ${netX/dns6_bak} && set netX/dns6 ${netX/dns6_bak} ||
-set netX/dns6_bak ${netX/dns6}
-echo Attempting ${conn_type} boot over IPv6...
-chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo ${conn_type} IPv6 failed... attempting IPv4...
-clear netX/dns6
-:menu_v4
-echo Attempting ${conn_type} boot over IPv4...
-chain --autofree https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/menu.ipxe || echo ${conn_type} IPv4 failed...
-iseq ${conn_type} https && goto menu_http || goto localboot
-
-:localboot
-exit
-
-:retry
-goto start
-
-:reboot
-reboot
-goto start
-
-:debug
-echo Type "exit" to return to menu
+:shell
+echo Type "exit" to return to menu.
+set menu main_menu
 shell
-goto failsafe
+goto main_menu
+
+:change_arch
+iseq ${arch} x86_64 && set arch i386 && set menu_linux_i386 1 && set menu_linux 0 && goto main_menu ||
+iseq ${arch} i386 && set arch x86_64 && set menu_linux_i386 0 && set menu_linux 1 && goto main_menu ||
+goto main_menu
+
+:sig_check
+iseq ${sigs_enabled} true && set sigs_enabled false || set sigs_enabled true
+goto main_menu
+
+:about
+chain https://boot.netboot.xyz/about.ipxe || chain about.ipxe
+goto main_menu
+
+:custom-github
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe || goto error
+goto main_menu
+
+:custom-url
+chain ${custom_url}/custom.ipxe || goto error
+goto main_menu
+
+:custom-user
+chain custom/custom.ipxe
+goto main_menu

@@ -46,7 +46,7 @@ imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
 goto change_menu
 
 :change_menu
-chain ${menu}.ipxe || goto error
+chain https://raw.githubusercontent.com/amidevous/wimboot-install/refs/heads/main/netboot/${menu}.ipxe || goto error
 goto linux_menu
 
 :linux_exit

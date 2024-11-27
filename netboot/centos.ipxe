@@ -71,9 +71,6 @@ iseq ${osversion} 10-stream && set dir ${osversion}/BaseOS/${os_arch}/os ||
 iseq ${osversion} 10-stream && set repo ${centos_mirror}/${dir} ||
 kernel ${centos_mirror}/${dir}/images/pxeboot/vmlinuz inst.repo=${repo} ${install_mode} ${params} ${ipparam} initrd=initrd.magic ${cmdline}
 initrd ${centos_mirror}/${dir}/images/pxeboot/initrd.img
-echo
-echo MD5sums:
-md5sum vmlinuz initrd.img
 boot
 goto linux_menu
 

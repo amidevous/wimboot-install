@@ -79,7 +79,7 @@ echo Assign Letter=A >> config.txt
 set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
 gpt attributes=0x8000000000000001 >> config.txt
 echo exit >> config.txt
-rem diskpart /s config.txt
+diskpart /s config.txt
 echo "Windows RE tools"
 rem pause
 echo select disk 0 > config.txt
@@ -88,7 +88,7 @@ format quick fs=fat32 label="System" >> config.txt
 echo Assign Letter=B >> config.txt
 echo set id=2 >> config.txt
 echo exit >> config.txt
-rem diskpart /s config.txt
+diskpart /s config.txt
 echo "System partition (ESP/EFI)"
 rem pause
 echo select disk 0 > config.txt
@@ -96,7 +96,7 @@ echo CREATE PARTITION MSR LABEL="MSR" SIZE=128 >> config.txt
 echo Assign Letter=D >> config.txt
 echo set id=3 >> config.txt
 echo exit >> config.txt
-rem diskpart /s config.txt
+diskpart /s config.txt
 echo "Microsoft reserved partition (MSR)"
 rem pause
 echo select disk 0 > config.txt
@@ -118,7 +118,7 @@ rem set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
 echo set id="4" >> config.txt
 echo active >> config.txt
 echo exit >> config.txt
-rem diskpart /s config.txt
+diskpart /s config.txt
 echo "drive C"
 rem pause
 echo create partition primary >> config.txt
@@ -128,7 +128,7 @@ echo set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac" >> config.txt
 echo list volume >> config.txt
 echo exit >> config.txt
 rem pause
-rem diskpart /s config.txt
+diskpart /s config.txt
 rem pause
 rem pause
 rem pause

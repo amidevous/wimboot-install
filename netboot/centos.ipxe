@@ -63,6 +63,10 @@ goto boottype
 
 :bootos_images
 imgfree
+iseq ${osversion} 6 && set dir ${osversion}/${os_arch}/os ||
+iseq ${osversion} 6 && set repo ${centos_mirror}/${dir} ||
+iseq ${osversion} 7 && set dir ${osversion}/${os_arch}/os ||
+iseq ${osversion} 7 && set repo ${centos_mirror}/${dir} ||
 iseq ${osversion} 9-stream && set centos_mirror http://mirror.rackspace.com/centos-stream ||
 iseq ${osversion} 9-stream && set dir ${osversion}/BaseOS/${os_arch}/os ||
 iseq ${osversion} 9-stream && set repo ${centos_mirror}/${dir} ||
@@ -71,6 +75,9 @@ iseq ${osversion} 10-stream && set dir ${osversion}/BaseOS/${os_arch}/os ||
 iseq ${osversion} 10-stream && set repo ${centos_mirror}/${dir} ||
 kernel ${centos_mirror}/${dir}/images/pxeboot/vmlinuz inst.repo=${repo} ${install_mode} ${params} ${ipparam} initrd=initrd.magic ${cmdline}
 initrd ${centos_mirror}/${dir}/images/pxeboot/initrd.img
+echo
+echo MD5sums:
+md5sum vmlinuz initrd.img
 boot
 goto linux_menu
 

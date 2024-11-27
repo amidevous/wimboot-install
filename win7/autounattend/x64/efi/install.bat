@@ -101,7 +101,8 @@ echo "Microsoft reserved partition (MSR)"
 rem pause
 echo select disk 0 > config.txt
 echo create partition PRIMARY size=20000 >> config.txt
-echo FORMAT QUICK FS=NTFS LABEL="System" >> config.txt
+echo shrink minimum=20000 >> config.txt
+echo FORMAT QUICK FS=NTFS LABEL="install" >> config.txt
 echo assign letter="S" >> config.txt
 echo set id=5 >> config.txt
 echo active >> config.txt
@@ -160,6 +161,7 @@ rem S:\Cygwin\bin\wget.exe https://github.com/amidevous/wimboot-install/releases
 pause
 S:\sources\setup.exe /noreboot /unattend:x:\Windows\System32\autounattend.xml
 pause
+cmd
 if %isoversionmin%==win10 Dism /Image:w:\ /enable-feature /featurename:NetFx3 /All /Source:"s:\sources\sxs" /LimitAccess /NoRestart /LogLevel:4
 pause
 if exist x:\Windows\System32\e1d68x64.inf Dism /Image:W:\ /Add-Driver /Driver:x:\Windows\System32\e1d68x64.inf
